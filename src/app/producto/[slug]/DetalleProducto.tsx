@@ -1,0 +1,151 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import type { Producto } from "@/lib/types";
+import { formatMXN, ivaIncluido } from "@/lib/mexico";
+import { useCarrito } from "@/context/CarritoContext";
+import Estrellas from "@/components/Estrellas";
+
+const IMG_FALLBACK = "https://picsum.photos/seed/navidalia-fallback/800/800";
+
+export default function DetalleProducto({
+  producto,
+  promedio,
+  totalResenas,
+}: {
+  producto: Producto;
+  promedio: number;
+  totalResenas: number;
+}) {
+  const { agregar } = useCarrito();
+  const [cantidad, setCantidad] = useState(1);
+  const [agregado, setAgregado] = useState(false);
+  const [imgSrc, setImgSrc] = useState(producto.imagen);
+
+  const handleAgregar = () => {
+    agregar(producto, cantidad);
+    setAgregado(true);
+    setTimeout(() => setAgregado(false), 2000);
+  };
+
+  const tieneDescuento =
+    producto.precioAnterior && producto.precioAnterior > producto.precio;
+
+  return (
+    <div className="mx-auto max-w-7xl px-4 py-10">
+      <nav className="mb-6 text-sm text-gray-500">
+        <Link href="/" className="hover:text-navidad-verde">
+          Inicio
+        </Link>{" "}
+        /{" "}
+        <Link
+          href={`/categoria/${producto.categoria}`}
+          className="capitalize hover:text-navidad-verde"
+        >
+          {producto.categoria}
+        </Link>{" "}
+        / <span className="text-gray-900">{producto.nombre}</span>
+      </nav>
+
+      <div className="grid gap-8 md:grid-cols-2">
+        <div className="relative aspect-square overflow-hidden rounded-xl bg-gray-100">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={imgSrc}
+            alt={producto.nombre}
+            onError={() => setImgSrc(IMG_FALLBACK)}
+            className="h-full w-full object-cover"
+          />
+          {producto.gancho && (
+            <span className="absolute left-3 top-3 rounded-full bg-navidad-rojo px-3 py-1 text-sm font-bold text-white shadow">
+              🔥 Oferta de temporada
+            </span>
+          )}
+        </div>
+
+        <div>
+          <h1 className="font-display text-3xl font-bold text-gray-900">
+            {producto.nombre}
+          </h1>
+
+          {totalResenas > 0 && (
+            <a
+              href="#opiniones"
+              className="mt-2 inline-flex items-center gap-2 text-sm"
+            >
+              <Estrellas valor={promedio} size="text-base" />
+              <span className="font-medium text-gray-700">
+                {promedio.toFixed(1)}
+              </span>
+              <span className="text-navidad-verde hover:underline">
+                ({totalResenas} opiniones)
+              </span>
+            </a>
+          )}
+
+          <div className="mt-4 flex items-end gap-3">
+            {tieneDescuento && (
+              <span className="text-lg text-gray-400 line-through">
+                {formatMXN(producto.precioAnterior!)}
+              </span>
+            )}
+            <span className="text-3xl font-bold text-gray-900">
+              {formatMXN(producto.precio)}
+            </span>
+          </div>
+          <p className="mt-1 text-sm text-gray-500">
+            IVA incluido ({formatMXN(ivaIncluido(producto.precio))})
+          </p>
+
+          <p className="mt-6 text-gray-700">{producto.descripcion}</p>
+
+          <div className="mt-6">
+            {producto.stock > 0 ? (
+              <p className="text-sm font-medium text-navidad-verde">
+                ✓ {producto.stock} disponibles
+              </p>
+            ) : (
+              <p className="text-sm font-medium text-navidad-rojo">Agotado</p>
+            )}
+          </div>
+
+          <div className="mt-6 flex items-center gap-4">
+            <div className="flex items-center rounded-lg border border-gray-300">
+              <button
+                onClick={() => setCantidad((c) => Math.max(1, c - 1))}
+                className="px-4 py-2 text-lg text-gray-600 hover:text-navidad-verde"
+                aria-label="Disminuir"
+              >
+                −
+              </button>
+              <span className="w-12 text-center font-semibold">{cantidad}</span>
+              <button
+                onClick={() =>
+                  setCantidad((c) => Math.min(producto.stock, c + 1))
+                }
+                className="px-4 py-2 text-lg text-gray-600 hover:text-navidad-verde"
+                aria-label="Aumentar"
+              >
+                +
+              </button>
+            </div>
+            <button
+              onClick={handleAgregar}
+              disabled={producto.stock === 0}
+              className="flex-1 rounded-lg bg-navidad-verde px-6 py-3 font-semibold text-white transition-colors hover:bg-navidad-verdeClaro disabled:cursor-not-allowed disabled:bg-gray-300"
+            >
+              {agregado ? "✓ Agregado al carrito" : "Agregar al carrito"}
+            </button>
+          </div>
+
+          <div className="mt-8 space-y-2 rounded-lg bg-navidad-crema p-4 text-sm text-gray-700">
+            <p>🚚 Envío gratis en compras mayores a $799 MXN</p>
+            <p>💳 Paga con tarjeta, SPEI o Mercado Pago</p>
+            <p>🧾 Facturación CFDI disponible</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

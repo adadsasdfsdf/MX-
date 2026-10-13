@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Usuario {
+  id       String   @id @default(cuid())
+  nombre   String
+  email    String   @unique
+  password String
+  rol      String   @default("cliente")
+  pedidos  Pedido[]
+  creadoEn DateTime @default(now())
+}
+
+model Producto {
+  id                     String       @id @default(cuid())
+  slug                   String       @unique
+  nombre                 String
+  descripcion            String
+  // Precio de venta (lo que paga el cliente), en centavos.
+  precioCentavos         Int
+  // Precio de mercado (tachado), en centavos.
+  precioAnteriorCentavos Int?
+  categoria              String
+  imagen                 String
+  stock                  Int          @default(0)
+  // Marca el producto como "gancho" de bajo precio (50% del mercado).
+  gancho                 Boolean      @default(false)
+  destacado              Boolean      @default(false)
+  activo                 Boolean      @default(true)
+  itemsPedido            ItemPedido[]
+  resenas                Resena[]
+  creadoEn               DateTime     @default(now())
+  actualizadoEn          DateTime     @updatedAt
+}
+
+model Resena {
+  id           String   @id @default(cuid())
+  producto     Producto @relation(fields: [productoId], references: [id], onDelete: Cascade)
+  productoId   String
+  autor        String
+  calificacion Int
+  comentario   String
+  verificada   Boolean  @default(true)
+  creadoEn     DateTime @default(now())
+
+  @@index([productoId])
+}
+
+model Pedido {
+  id               String       @id @default(cuid())
+  numero           String       @unique
+  usuario          Usuario?     @relation(fields: [usuarioId], references: [id])
+  usuarioId        String?
+  nombreCliente    String
+  email            String
+  telefono         String
+  calle            String
+  colonia          String?
+  codigoPostal     String
+  ciudad           String
+  estado           String
+  subtotalCentavos Int
+  envioCentavos    Int
+  totalCentavos    Int
+  metodoPago       String
+  estadoPago       String       @default("pendiente")
+  referenciaPago   String?
+  requiereFactura  Boolean      @default(false)
+  rfc              String?
+  razonSocial      String?
+  usoCfdi          String?
+  estadoEnvio      String       @default("procesando")
+  items            ItemPedido[]
+  creadoEn         DateTime     @default(now())
+}
+
+model ItemPedido {
+  id             String   @id @default(cuid())
+  pedido         Pedido   @relation(fields: [pedidoId], references: [id], onDelete: Cascade)
+  pedidoId       String
+  producto       Producto @relation(fields: [productoId], references: [id])
+  productoId     String
+  nombre         String
+  precioCentavos Int
+  cantidad       Int
+}
