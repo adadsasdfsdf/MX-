@@ -34,6 +34,27 @@ export default function AdminProductos({
   const [form, setForm] = useState<typeof FORM_VACIO>(FORM_VACIO);
   const [error, setError] = useState("");
   const [guardando, setGuardando] = useState(false);
+  const [subiendo, setSubiendo] = useState(false);
+
+  const subirImagen = async (archivo: File) => {
+    setError("");
+    setSubiendo(true);
+    try {
+      const fd = new FormData();
+      fd.append("archivo", archivo);
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: fd,
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Error al subir la imagen");
+      setForm((f) => ({ ...f, imagen: data.url }));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Error al subir la imagen");
+    } finally {
+      setSubiendo(false);
+    }
+  };
 
   const abrirNuevo = () => {
     setForm(FORM_VACIO);
@@ -275,14 +296,42 @@ export default function AdminProductos({
                   className={inputClass}
                 />
               </div>
-              <input
-                required
-                type="url"
-                placeholder="URL de la imagen"
-                value={form.imagen}
-                onChange={(e) => setForm({ ...form, imagen: e.target.value })}
-                className={inputClass}
-              />
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  Imagen del producto
+                </label>
+                <div className="flex items-center gap-3">
+                  {form.imagen && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={form.imagen}
+                      alt="Vista previa"
+                      className="h-16 w-16 rounded-lg border border-gray-200 object-cover"
+                    />
+                  )}
+                  <label className="cursor-pointer rounded-lg border border-navidad-verde px-4 py-2 text-sm font-medium text-navidad-verde transition-colors hover:bg-navidad-verde hover:text-white">
+                    {subiendo ? "Subiendo..." : "📁 Subir imagen"}
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      disabled={subiendo}
+                      onChange={(e) => {
+                        const archivo = e.target.files?.[0];
+                        if (archivo) subirImagen(archivo);
+                      }}
+                    />
+                  </label>
+                </div>
+                <input
+                  required
+                  type="url"
+                  placeholder="…o pega la URL de una imagen"
+                  value={form.imagen}
+                  onChange={(e) => setForm({ ...form, imagen: e.target.value })}
+                  className={inputClass}
+                />
+              </div>
               <div className="flex gap-4">
                 <label className="flex items-center gap-2 text-sm text-gray-700">
                   <input
