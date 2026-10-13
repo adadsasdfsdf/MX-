@@ -45,7 +45,7 @@ const DIAPOSITIVAS: Diapositiva[] = [
     titulo: "Envío gratis",
     destacado: "desde $799 MXN",
     descripcion:
-      "Recibe todo para tus fiestas antes de Navidad. Pide a tiempo y paga con tarjeta, SPEI o Mercado Pago a meses sin intereses.",
+      "Recibe todo para tus fiestas antes de Navidad. Pide a tiempo y paga con tarjeta de crédito o débito a meses sin intereses.",
     ctaTexto: "Empezar a comprar",
     ctaHref: "/",
     cta2Texto: "Ver ofertas 🔥",

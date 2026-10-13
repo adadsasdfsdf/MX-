@@ -45,9 +45,9 @@ export default function Footer() {
         <div>
           <h3 className="mb-3 font-semibold">Métodos de pago</h3>
           <ul className="space-y-2 text-sm text-emerald-100">
-            <li>💳 Tarjeta de crédito/débito</li>
-            <li>🏦 Transferencia SPEI</li>
-            <li>💙 Mercado Pago</li>
+            <li>💳 Tarjeta de crédito</li>
+            <li>💳 Tarjeta de débito</li>
+            <li>🎁 Meses sin intereses</li>
           </ul>
         </div>
       </div>

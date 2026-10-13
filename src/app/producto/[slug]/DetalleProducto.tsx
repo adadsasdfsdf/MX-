@@ -141,7 +141,7 @@ export default function DetalleProducto({
 
           <div className="mt-8 space-y-2 rounded-lg bg-navidad-crema p-4 text-sm text-gray-700">
             <p>🚚 Envío gratis en compras mayores a $799 MXN</p>
-            <p>💳 Paga con tarjeta, SPEI o Mercado Pago</p>
+            <p>💳 Paga con tarjeta de crédito o débito a meses sin intereses</p>
             <p>🧾 Facturación CFDI disponible</p>
           </div>
         </div>

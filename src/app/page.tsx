@@ -106,7 +106,7 @@ export default async function HomePage() {
             <div className="text-4xl">💳</div>
             <h3 className="mt-3 font-semibold text-gray-900">Pago seguro</h3>
             <p className="mt-1 text-sm text-gray-600">
-              Tarjeta, SPEI y Mercado Pago
+              Pago con tarjeta de crédito o débito
             </p>
           </div>
           <div>

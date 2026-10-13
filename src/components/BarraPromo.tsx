@@ -3,7 +3,7 @@ const ANUNCIOS = [
   "🚚 Envío GRATIS en compras mayores a $799 MXN",
   "🎁 Todo el catálogo con 20% de descuento",
   "🦌 La magia de la Navidad, directo a tu puerta",
-  "💳 Paga a meses sin intereses con Mercado Pago",
+  "💳 Paga con tarjeta a meses sin intereses",
   "⭐ Miles de familias ya decoran con Navidalia",
 ];
 
