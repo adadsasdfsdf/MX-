@@ -61,9 +61,9 @@ export default function CheckoutPage() {
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
       setForm((f) => ({ ...f, [campo]: e.target.value }));
 
-  // Crea el pedido en el servidor (se llama tras el formulario de tarjeta,
-  // o directo para SPEI/Mercado Pago).
-  const crearPedido = async () => {
+  // Crea el pedido en el servidor. Recibe solo datos NO sensibles de la
+  // tarjeta (marca y últimos 4), nunca el número completo ni el CVV.
+  const crearPedido = async (tarjeta?: { marca: string; ultimos4: string }) => {
     setError("");
     setProcesando(true);
     try {
@@ -73,6 +73,8 @@ export default function CheckoutPage() {
         body: JSON.stringify({
           ...form,
           metodoPago,
+          marcaTarjeta: tarjeta?.marca,
+          ultimos4: tarjeta?.ultimos4,
           requiereFactura: quiereFactura,
           ...(quiereFactura ? factura : {}),
           items: items.map((i) => ({

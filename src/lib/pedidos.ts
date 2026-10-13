@@ -13,6 +13,12 @@ export const checkoutSchema = z.object({
   ciudad: z.string().min(2),
   estado: z.string().min(2),
   metodoPago: z.enum(["tarjeta"]),
+  // Datos NO sensibles de la tarjeta (opcionales).
+  marcaTarjeta: z.string().max(20).optional(),
+  ultimos4: z
+    .string()
+    .regex(/^\d{4}$/)
+    .optional(),
   requiereFactura: z.boolean().optional().default(false),
   rfc: z.string().optional(),
   razonSocial: z.string().optional(),
@@ -108,6 +114,8 @@ export async function crearPedido(
         metodoPago: input.metodoPago,
         estadoPago: pago.estado,
         referenciaPago: pago.referencia,
+        marcaTarjeta: input.marcaTarjeta || null,
+        ultimos4: input.ultimos4 || null,
         requiereFactura: input.requiereFactura ?? false,
         rfc: input.rfc || null,
         razonSocial: input.razonSocial || null,
