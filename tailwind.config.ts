@@ -9,12 +9,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Paleta navideña
+        // Paleta navideña con el ROJO como color principal.
+        // Nota: "verde" ocupa la posición del color principal del tema y por
+        // eso se le asignó el rojo navideño (así todo el sitio queda en rojo
+        // sin tocar cada componente). El verde real queda como acento.
         navidad: {
-          rojo: "#c1121f", // rojo navideño
-          rojoOscuro: "#8d0801",
-          verde: "#1b5e3b", // verde pino
-          verdeClaro: "#2d8659",
+          // Color principal del tema (usado en botones, logo, enlaces).
+          verde: "#c1121f", // rojo navideño (principal)
+          verdeClaro: "#e02234", // rojo más claro para hover
+          // "rojo" se usa en barras promocionales / etiquetas: un rojo más
+          // profundo para contrastar con el principal.
+          rojo: "#8d0801", // rojo profundo
+          rojoOscuro: "#6a0400",
+          // Verde real, como acento navideño.
+          acento: "#1b5e3b",
           oro: "#d4af37", // dorado
           crema: "#fdf6ec", // crema cálida
           nieve: "#f4f8fb", // blanco nieve

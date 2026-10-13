@@ -34,7 +34,7 @@ export default async function OfertasPage() {
               "url('https://picsum.photos/seed/navidalia-ofertas-fondo/1600/700')",
           }}
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navidad-rojo/95 via-navidad-rojo/85 to-navidad-verde/70" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navidad-rojoOscuro/95 via-navidad-verde/85 to-navidad-acento/60" />
         <div className="mx-auto max-w-7xl px-4 py-20 text-center text-white md:py-28">
           <span className="inline-block rounded-full bg-white/20 px-4 py-1 text-sm font-semibold backdrop-blur">
             🎄 Ofertas de temporada
@@ -55,7 +55,7 @@ export default async function OfertasPage() {
         </div>
       </section>
 
-      <section className="marquee-pausa overflow-hidden bg-navidad-verde py-3 text-white">
+      <section className="marquee-pausa overflow-hidden bg-navidad-acento py-3 text-white">
         <div className="flex w-max animate-marquee whitespace-nowrap">
           {frases.map((f, i) => (
             <span key={i} className="mx-8 text-sm font-bold tracking-wide">

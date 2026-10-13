@@ -10,7 +10,7 @@ const ANUNCIOS = [
 export default function BarraPromo() {
   const items = [...ANUNCIOS, ...ANUNCIOS];
   return (
-    <div className="marquee-pausa overflow-hidden bg-navidad-rojo text-white">
+    <div className="marquee-pausa overflow-hidden bg-navidad-acento text-white">
       <div className="flex w-max animate-marquee whitespace-nowrap py-2">
         {items.map((t, i) => (
           <span key={i} className="mx-6 text-sm font-medium">

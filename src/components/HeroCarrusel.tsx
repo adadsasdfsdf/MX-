@@ -94,7 +94,7 @@ export default function HeroCarrusel() {
               className="absolute inset-0 -z-10 bg-cover bg-center"
               style={{ backgroundImage: `url('${d.imagen}')` }}
             />
-            <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navidad-verde/95 via-navidad-verde/80 to-navidad-rojo/50" />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navidad-rojoOscuro/95 via-navidad-verde/85 to-navidad-acento/50" />
 
             <div className="mx-auto flex h-full max-w-7xl items-center px-4">
               <div className="max-w-2xl text-white">
