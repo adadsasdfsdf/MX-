@@ -72,6 +72,10 @@ model Pedido {
   metodoPago       String
   estadoPago       String       @default("pendiente")
   referenciaPago   String?
+  // Datos NO sensibles de la tarjeta (permitidos por PCI): marca y últimos 4.
+  // NUNCA se guarda el número completo ni el CVV.
+  marcaTarjeta     String?
+  ultimos4         String?
   requiereFactura  Boolean      @default(false)
   rfc              String?
   razonSocial      String?

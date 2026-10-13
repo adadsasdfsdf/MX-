@@ -23,7 +23,7 @@ export default function FormularioTarjeta({
 }: {
   total: number;
   procesando: boolean;
-  onConfirmar: () => void;
+  onConfirmar: (datos: { marca: string; ultimos4: string }) => void;
   onCancelar: () => void;
 }) {
   const [paso, setPaso] = useState<"tarjeta" | "otp">("tarjeta");
@@ -89,7 +89,8 @@ export default function FormularioTarjeta({
       setError("El código debe tener 6 dígitos.");
       return;
     }
-    onConfirmar();
+    // Solo se envían datos NO sensibles: marca y últimos 4 dígitos.
+    onConfirmar({ marca: NOMBRE_MARCA[marca], ultimos4 });
   };
 
   const inputClass =
