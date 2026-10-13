@@ -35,3 +35,11 @@ Agrega la variable `NEXT_PUBLIC_GA_ID` con tu ID de medición (G-XXXXXXXXXX) y v
 
 ## 5. (Opcional) Pagos reales
 `MP_MOCK=false` + `MP_ACCESS_TOKEN=tu-token` de Mercado Pago.
+
+## 6. Subir imágenes desde el panel admin (Vercel Blob)
+Para poder subir imágenes de producto desde tu computadora en `/admin`:
+1. En Vercel, abre tu proyecto → pestaña **Storage** → **Create Database** → elige **Blob**.
+2. Dale un nombre y conéctalo al proyecto. Vercel añade automáticamente la
+   variable `BLOB_READ_WRITE_TOKEN`.
+3. Haz **Redeploy** del proyecto.
+4. Listo: en `/admin → Productos → Editar` aparece el botón **📁 Subir imagen**.
