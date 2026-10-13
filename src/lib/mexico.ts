@@ -9,11 +9,13 @@ export const STANDARD_SHIPPING_COST = 99;
 
 /** Formatea un número como precio en pesos mexicanos. */
 export function formatMXN(amount: number): string {
-  return new Intl.NumberFormat("es-MX", {
-    style: "currency",
-    currency: "MXN",
+  // Formatea el número y antepone "MX$" + sufijo " MXN" para dejar claro que
+  // son pesos mexicanos (y no dólares), ya que el símbolo "$" es compartido.
+  const numero = new Intl.NumberFormat("es-MX", {
     minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   }).format(amount);
+  return `MX$${numero} MXN`;
 }
 
 /** IVA incluido en un precio que ya lo contiene. */
