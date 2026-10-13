@@ -11,19 +11,24 @@ export default function RegistroPage() {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [telefono, setTelefono] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [cargando, setCargando] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    if (!/^\d{10}$/.test(telefono)) {
+    if (telefono && !/^\d{10}$/.test(telefono)) {
       setError("El teléfono debe tener 10 dígitos.");
+      return;
+    }
+    if (password.length < 6) {
+      setError("La contraseña debe tener al menos 6 caracteres.");
       return;
     }
     setCargando(true);
     try {
-      await registro(nombre, email, telefono);
+      await registro(nombre, email, telefono, password);
       router.push("/mi-cuenta");
       router.refresh();
     } catch (err) {
@@ -97,6 +102,20 @@ export default function RegistroPage() {
             className={inputClass}
           />
         </div>
+        <div>
+          <label className="mb-1 block text-sm font-medium text-gray-700">
+            Contraseña
+          </label>
+          <input
+            required
+            type="password"
+            minLength={6}
+            placeholder="Mínimo 6 caracteres"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className={inputClass}
+          />
+        </div>
 
         <button
           type="submit"
@@ -105,11 +124,6 @@ export default function RegistroPage() {
         >
           {cargando ? "Creando cuenta..." : "Crear cuenta"}
         </button>
-
-        <p className="rounded-lg bg-navidad-crema p-3 text-xs text-gray-600">
-          💡 Para iniciar sesión después, usa tu <strong>correo</strong> y tu{" "}
-          <strong>número de teléfono</strong> como contraseña.
-        </p>
       </form>
     </div>
   );

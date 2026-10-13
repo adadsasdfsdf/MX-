@@ -1,5 +1,5 @@
 import Estrellas from "@/components/Estrellas";
-import { formatFecha } from "@/lib/mexico";
+import ListaResenas from "@/components/ListaResenas";
 import type { ResumenResenas } from "@/lib/data";
 
 export default function Resenas({ data }: { data: ResumenResenas }) {
@@ -51,32 +51,7 @@ export default function Resenas({ data }: { data: ResumenResenas }) {
         </div>
       </div>
 
-      <div className="mt-6 space-y-4">
-        {resenas.map((r) => (
-          <div
-            key={r.id}
-            className="rounded-xl border border-gray-200 bg-white p-5"
-          >
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="font-semibold text-gray-900">{r.autor}</span>
-                  {r.verificada && (
-                    <span className="rounded-full bg-navidad-verde/10 px-2 py-0.5 text-xs font-medium text-navidad-verde">
-                      ✓ Compra verificada
-                    </span>
-                  )}
-                </div>
-                <Estrellas valor={r.calificacion} size="text-sm" />
-              </div>
-              <span className="whitespace-nowrap text-xs text-gray-400">
-                {formatFecha(r.creadoEn)}
-              </span>
-            </div>
-            <p className="mt-2 text-sm text-gray-700">{r.comentario}</p>
-          </div>
-        ))}
-      </div>
+      <ListaResenas resenas={resenas} />
     </section>
   );
 }
