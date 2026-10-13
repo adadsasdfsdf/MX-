@@ -1,51 +1,12 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 interface Mensaje {
-  de: "bot" | "usuario";
+  id?: string;
+  de: "bot" | "cliente" | "admin";
   texto: string;
 }
-
-const RESPUESTAS: { claves: string[]; respuesta: string }[] = [
-  {
-    claves: [
-      "envio",
-      "envío",
-      "entrega",
-      "llega",
-      "cuanto tarda",
-      "cuánto tarda",
-    ],
-    respuesta:
-      "📦 Enviamos a toda la República. El envío es GRATIS en compras mayores a $799 MXN. Entrega de 3 a 7 días hábiles. ¡Pide antes del 20 de diciembre para recibir en Navidad! 🎄",
-  },
-  {
-    claves: ["pago", "pagar", "tarjeta", "spei", "mercado", "meses"],
-    respuesta:
-      "💳 Aceptamos tarjeta, transferencia SPEI y Mercado Pago con meses sin intereses.",
-  },
-  {
-    claves: ["factura", "cfdi", "rfc"],
-    respuesta:
-      "🧾 ¡Claro! Puedes solicitar tu factura CFDI al finalizar la compra ingresando tu RFC.",
-  },
-  {
-    claves: ["descuento", "oferta", "promocion", "promoción", "barato"],
-    respuesta:
-      "🎁 ¡Tenemos ofertas de hasta 50% en productos seleccionados y 20% en todo el catálogo! Visita la sección Ofertas. 🔥",
-  },
-  {
-    claves: ["devolucion", "devolución", "cambio", "reembolso"],
-    respuesta:
-      "🔄 Tienes 30 días para cambios o devoluciones. Escríbenos a hola@navidalia.mx con tu número de pedido.",
-  },
-  {
-    claves: ["hola", "buenas", "feliz navidad", "que tal", "qué tal"],
-    respuesta:
-      "¡Hola y felices fiestas! 🎄 Soy el elfo asistente de Navidalia. ¿En qué puedo ayudarte? Pregúntame sobre envíos, pagos, facturación o devoluciones.",
-  },
-];
 
 const PREGUNTAS = [
   "¿Cuándo llega mi pedido?",
@@ -54,13 +15,7 @@ const PREGUNTAS = [
   "¿Hay ofertas?",
 ];
 
-function responder(texto: string): string {
-  const t = texto.toLowerCase();
-  for (const r of RESPUESTAS) {
-    if (r.claves.some((c) => t.includes(c))) return r.respuesta;
-  }
-  return "Gracias por tu mensaje. 🎁 Para ayuda personalizada escríbenos a hola@navidalia.mx o pregúntame sobre envíos, pagos, facturación o devoluciones.";
-}
+const STORAGE_KEY = "navidalia-soporte-conv";
 
 export default function ChatSoporte() {
   const [abierto, setAbierto] = useState(false);
@@ -68,24 +23,75 @@ export default function ChatSoporte() {
     {
       de: "bot",
       texto:
-        "¡Hola y felices fiestas! 🎄 Soy el elfo asistente de Navidalia. ¿En qué puedo ayudarte hoy?",
+        "¡Hola y felices fiestas! 🎄 Soy el asistente de Navidalia. Escríbenos tu pregunta y nuestro equipo te responderá por aquí.",
     },
   ]);
   const [entrada, setEntrada] = useState("");
+  const [convId, setConvId] = useState<string | null>(null);
+  const [enviando, setEnviando] = useState(false);
   const finRef = useRef<HTMLDivElement>(null);
+
+  // Recuperar la conversación guardada (si existe).
+  useEffect(() => {
+    const guardado = localStorage.getItem(STORAGE_KEY);
+    if (guardado) setConvId(guardado);
+  }, []);
+
+  // Trae los mensajes del servidor (incluye respuestas del admin).
+  const sincronizar = useCallback(async (id: string) => {
+    try {
+      const res = await fetch(`/api/soporte?id=${id}`);
+      const data = await res.json();
+      if (Array.isArray(data.mensajes) && data.mensajes.length > 0) {
+        setMensajes((prev) => {
+          // Conserva el saludo inicial del bot + los mensajes del servidor.
+          const bot = prev.filter((m) => m.de === "bot");
+          return [...bot, ...data.mensajes];
+        });
+      }
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
+  // Polling cada 5s mientras el chat está abierto y hay conversación.
+  useEffect(() => {
+    if (!abierto || !convId) return;
+    sincronizar(convId);
+    const t = setInterval(() => sincronizar(convId), 5000);
+    return () => clearInterval(t);
+  }, [abierto, convId, sincronizar]);
 
   useEffect(() => {
     finRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [mensajes, abierto]);
 
-  const enviar = (texto: string) => {
+  const enviar = async (texto: string) => {
     const limpio = texto.trim();
-    if (!limpio) return;
-    setMensajes((m) => [...m, { de: "usuario", texto: limpio }]);
+    if (!limpio || enviando) return;
     setEntrada("");
-    setTimeout(() => {
-      setMensajes((m) => [...m, { de: "bot", texto: responder(limpio) }]);
-    }, 500);
+    setEnviando(true);
+    // Mostrar el mensaje del cliente de inmediato (optimista).
+    setMensajes((prev) => [...prev, { de: "cliente", texto: limpio }]);
+    try {
+      const res = await fetch("/api/soporte", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ conversacionId: convId, texto: limpio }),
+      });
+      const data = await res.json();
+      if (data.conversacionId) {
+        setConvId(data.conversacionId);
+        localStorage.setItem(STORAGE_KEY, data.conversacionId);
+      }
+    } catch {
+      setMensajes((prev) => [
+        ...prev,
+        { de: "bot", texto: "No se pudo enviar el mensaje. Intenta de nuevo." },
+      ]);
+    } finally {
+      setEnviando(false);
+    }
   };
 
   return (
@@ -105,7 +111,7 @@ export default function ChatSoporte() {
             <div>
               <p className="font-semibold leading-tight">Soporte Navidalia</p>
               <p className="text-xs text-emerald-100">
-                Normalmente respondemos al instante
+                Te responderemos por aquí
               </p>
             </div>
           </div>
@@ -113,16 +119,23 @@ export default function ChatSoporte() {
           <div className="flex-1 space-y-3 overflow-y-auto bg-navidad-crema p-4">
             {mensajes.map((m, i) => (
               <div
-                key={i}
-                className={`flex ${m.de === "usuario" ? "justify-end" : "justify-start"}`}
+                key={m.id ?? i}
+                className={`flex ${m.de === "cliente" ? "justify-end" : "justify-start"}`}
               >
                 <div
                   className={`max-w-[80%] rounded-2xl px-3 py-2 text-sm ${
-                    m.de === "usuario"
+                    m.de === "cliente"
                       ? "rounded-br-sm bg-navidad-verde text-white"
-                      : "rounded-bl-sm bg-white text-gray-700 shadow-sm"
+                      : m.de === "admin"
+                        ? "rounded-bl-sm bg-navidad-rojo text-white"
+                        : "rounded-bl-sm bg-white text-gray-700 shadow-sm"
                   }`}
                 >
+                  {m.de === "admin" && (
+                    <span className="mb-0.5 block text-[10px] font-semibold opacity-80">
+                      Equipo Navidalia
+                    </span>
+                  )}
                   {m.texto}
                 </div>
               </div>
@@ -158,7 +171,8 @@ export default function ChatSoporte() {
             />
             <button
               type="submit"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-navidad-verde text-white hover:bg-navidad-verdeClaro"
+              disabled={enviando}
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-navidad-verde text-white hover:bg-navidad-verdeClaro disabled:bg-gray-300"
               aria-label="Enviar"
             >
               ➤

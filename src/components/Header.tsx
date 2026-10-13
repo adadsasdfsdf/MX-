@@ -133,7 +133,7 @@ export default function Header() {
       </div>
 
       <nav className="border-t border-gray-100 bg-white">
-        <div className="mx-auto flex max-w-7xl items-center gap-5 overflow-x-auto px-4 py-2.5 text-sm">
+        <div className="mx-auto flex max-w-7xl items-center gap-6 overflow-x-auto px-4 py-2.5 text-sm md:justify-center">
           <Link
             href="/ofertas"
             className="flex flex-shrink-0 items-center gap-1 whitespace-nowrap font-bold text-navidad-rojo hover:text-navidad-rojoOscuro"
