@@ -91,3 +91,27 @@ model ItemPedido {
   precioCentavos Int
   cantidad       Int
 }
+
+model ConversacionSoporte {
+  id            String            @id @default(cuid())
+  // Nombre/correo opcional que deje el visitante.
+  nombre        String?
+  email         String?
+  mensajes      MensajeSoporte[]
+  // Marca si el admin ya la atendió.
+  atendida      Boolean           @default(false)
+  creadoEn      DateTime          @default(now())
+  actualizadoEn DateTime          @updatedAt
+}
+
+model MensajeSoporte {
+  id             String              @id @default(cuid())
+  conversacion   ConversacionSoporte @relation(fields: [conversacionId], references: [id], onDelete: Cascade)
+  conversacionId String
+  // "cliente" o "admin"
+  de             String
+  texto          String
+  creadoEn       DateTime            @default(now())
+
+  @@index([conversacionId])
+}

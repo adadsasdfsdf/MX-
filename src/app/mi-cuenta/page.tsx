@@ -59,10 +59,15 @@ export default async function MiCuentaPage() {
                 className="block rounded-xl border border-gray-200 bg-white p-5 transition-shadow hover:shadow-md"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-semibold text-gray-900">{p.numero}</p>
                     <p className="text-sm text-gray-500">
                       {formatFecha(p.creadoEn)} · {p.items.length} artículo(s)
+                    </p>
+                    <p className="mt-1 truncate text-xs text-gray-400">
+                      {p.items
+                        .map((i) => `${i.nombre} ×${i.cantidad}`)
+                        .join(" · ")}
                     </p>
                   </div>
                   <div className="flex items-center gap-3">
