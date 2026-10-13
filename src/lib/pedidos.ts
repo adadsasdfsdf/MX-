@@ -29,9 +29,25 @@ export const checkoutSchema = z.object({
 
 export type CheckoutInput = z.infer<typeof checkoutSchema>;
 
+/** Genera un código aleatorio de letras y números (sin caracteres confusos). */
+function codigoAleatorio(longitud = 8): string {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // sin 0/O ni 1/I
+  let out = "";
+  for (let i = 0; i < longitud; i++) {
+    out += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return out;
+}
+
+/** Número de pedido aleatorio (ej. NAV-7K3F9X2A), único en la base de datos. */
 async function siguienteNumero(): Promise<string> {
-  const count = await prisma.pedido.count();
-  return `NAV-${String(count + 1).padStart(5, "0")}`;
+  for (let intento = 0; intento < 10; intento++) {
+    const numero = `NAV-${codigoAleatorio(8)}`;
+    const existe = await prisma.pedido.findUnique({ where: { numero } });
+    if (!existe) return numero;
+  }
+  // Fallback extremadamente improbable: añade timestamp.
+  return `NAV-${codigoAleatorio(6)}${Date.now().toString(36).toUpperCase()}`;
 }
 
 export async function crearPedido(

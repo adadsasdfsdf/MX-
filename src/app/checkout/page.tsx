@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCarrito } from "@/context/CarritoContext";
+import FormularioTarjeta from "@/components/FormularioTarjeta";
 import {
   ESTADOS_MEXICO,
   METODOS_PAGO,
@@ -34,6 +35,7 @@ export default function CheckoutPage() {
   });
   const [error, setError] = useState("");
   const [procesando, setProcesando] = useState(false);
+  const [mostrarTarjeta, setMostrarTarjeta] = useState(false);
 
   const cpInvalido =
     form.codigoPostal.length > 0 && !esCodigoPostalValido(form.codigoPostal);
@@ -42,8 +44,9 @@ export default function CheckoutPage() {
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
       setForm((f) => ({ ...f, [campo]: e.target.value }));
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // Crea el pedido en el servidor (se llama tras el formulario de tarjeta,
+  // o directo para SPEI/Mercado Pago).
+  const crearPedido = async () => {
     setError("");
     setProcesando(true);
     try {
@@ -75,6 +78,19 @@ export default function CheckoutPage() {
         err instanceof Error ? err.message : "Error al procesar el pedido",
       );
       setProcesando(false);
+      setMostrarTarjeta(false);
+    }
+  };
+
+  // Al enviar el formulario de dirección: si paga con tarjeta, mostramos el
+  // formulario de tarjeta; si no, creamos el pedido directamente.
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    if (metodoPago === "tarjeta") {
+      setMostrarTarjeta(true);
+    } else {
+      crearPedido();
     }
   };
 
@@ -325,13 +341,26 @@ export default function CheckoutPage() {
             disabled={cpInvalido || procesando}
             className="mt-6 block w-full rounded-lg bg-navidad-verde py-3 text-center font-semibold text-white hover:bg-navidad-verdeClaro disabled:cursor-not-allowed disabled:bg-gray-300"
           >
-            {procesando ? "Procesando..." : "Pagar ahora"}
+            {procesando
+              ? "Procesando..."
+              : metodoPago === "tarjeta"
+                ? "Continuar al pago"
+                : "Confirmar pedido"}
           </button>
           <p className="mt-3 text-center text-xs text-gray-400">
-            🔒 Pago seguro procesado con Mercado Pago
+            🔒 Pago seguro · Modo de prueba, no se realizan cobros reales
           </p>
         </div>
       </form>
+
+      {mostrarTarjeta && (
+        <FormularioTarjeta
+          total={total}
+          procesando={procesando}
+          onConfirmar={crearPedido}
+          onCancelar={() => setMostrarTarjeta(false)}
+        />
+      )}
     </div>
   );
 }
