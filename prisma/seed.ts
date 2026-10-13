@@ -45,7 +45,7 @@ async function main() {
       where: { productoId: creado.id },
     });
     if (existentes === 0) {
-      const resenas = generarResenas(prod.slug);
+      const resenas = generarResenas(prod.slug, prod.gancho);
       await prisma.resena.createMany({
         data: resenas.map((r) => ({
           productoId: creado.id,
