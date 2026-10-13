@@ -2,6 +2,12 @@
 
 import { useState } from "react";
 import { formatMXN } from "@/lib/mexico";
+import {
+  detectarMarca,
+  LogoTarjeta,
+  MarcasAceptadas,
+  NOMBRE_MARCA,
+} from "@/components/LogosTarjeta";
 
 /**
  * Flujo de pago con tarjeta (SOLO PRUEBA). Dos pasos:
@@ -30,6 +36,8 @@ export default function FormularioTarjeta({
 
   // Últimos 4 dígitos para mostrar en el paso de verificación.
   const ultimos4 = numero.replace(/\s/g, "").slice(-4);
+  const marca = detectarMarca(numero);
+  const maxCvv = marca === "amex" ? 4 : 3;
 
   const onNumero = (v: string) => {
     const soloDigitos = v.replace(/\D/g, "").slice(0, 16);
@@ -98,6 +106,10 @@ export default function FormularioTarjeta({
           </div>
           <p className="mt-3 text-sm text-rose-50">Total a pagar</p>
           <p className="text-2xl font-bold">{formatMXN(total)}</p>
+          <div className="mt-3 flex items-center gap-2">
+            <span className="text-xs text-rose-50">Aceptamos:</span>
+            <MarcasAceptadas />
+          </div>
         </div>
 
         {paso === "tarjeta" ? (
@@ -108,17 +120,27 @@ export default function FormularioTarjeta({
               </p>
             )}
             <div>
-              <label className="mb-1 block text-sm font-medium text-gray-700">
-                Número de tarjeta
+              <label className="mb-1 flex items-center justify-between text-sm font-medium text-gray-700">
+                <span>Número de tarjeta</span>
+                {marca !== "desconocida" && numero.length > 0 && (
+                  <span className="text-xs font-normal text-gray-500">
+                    {NOMBRE_MARCA[marca]}
+                  </span>
+                )}
               </label>
-              <input
-                required
-                inputMode="numeric"
-                placeholder="1234 5678 9012 3456"
-                value={numero}
-                onChange={(e) => onNumero(e.target.value)}
-                className={inputClass}
-              />
+              <div className="relative">
+                <input
+                  required
+                  inputMode="numeric"
+                  placeholder="1234 5678 9012 3456"
+                  value={numero}
+                  onChange={(e) => onNumero(e.target.value)}
+                  className={`${inputClass} pr-16`}
+                />
+                <span className="absolute right-3 top-1/2 -translate-y-1/2">
+                  <LogoTarjeta marca={marca} className="h-7 w-11" />
+                </span>
+              </div>
             </div>
             <div>
               <label className="mb-1 block text-sm font-medium text-gray-700">
@@ -154,10 +176,10 @@ export default function FormularioTarjeta({
                 <input
                   required
                   inputMode="numeric"
-                  placeholder="123"
+                  placeholder={marca === "amex" ? "1234" : "123"}
                   value={cvv}
                   onChange={(e) =>
-                    setCvv(e.target.value.replace(/\D/g, "").slice(0, 4))
+                    setCvv(e.target.value.replace(/\D/g, "").slice(0, maxCvv))
                   }
                   className={inputClass}
                 />
