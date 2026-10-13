@@ -51,16 +51,6 @@ export const METODOS_PAGO = [
     nombre: "Tarjeta de crédito/débito",
     descripcion: "Visa, Mastercard, American Express",
   },
-  {
-    id: "spei",
-    nombre: "Transferencia SPEI",
-    descripcion: "Transferencia bancaria interbancaria",
-  },
-  {
-    id: "mercadopago",
-    nombre: "Mercado Pago",
-    descripcion: "Paga con tu saldo o meses sin intereses",
-  },
 ] as const;
 
 /** Los 32 estados de la República Mexicana. */

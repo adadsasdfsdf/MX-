@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCarrito } from "@/context/CarritoContext";
 import FormularioTarjeta from "@/components/FormularioTarjeta";
+
+const DIRECCION_KEY = "navidalia-direccion";
 import {
   ESTADOS_MEXICO,
   METODOS_PAGO,
@@ -36,6 +38,21 @@ export default function CheckoutPage() {
   const [error, setError] = useState("");
   const [procesando, setProcesando] = useState(false);
   const [mostrarTarjeta, setMostrarTarjeta] = useState(false);
+  const [guardado, setGuardado] = useState(false);
+
+  // Al montar, rellenar el formulario con la dirección guardada (si existe).
+  useEffect(() => {
+    try {
+      const data = localStorage.getItem(DIRECCION_KEY);
+      if (data) {
+        const d = JSON.parse(data);
+        setForm((f) => ({ ...f, ...d }));
+        setGuardado(true);
+      }
+    } catch {
+      /* ignore */
+    }
+  }, []);
 
   const cpInvalido =
     form.codigoPostal.length > 0 && !esCodigoPostalValido(form.codigoPostal);
@@ -66,6 +83,14 @@ export default function CheckoutPage() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Error al procesar el pedido");
+
+      // Guardar la dirección para la próxima compra.
+      try {
+        localStorage.setItem(DIRECCION_KEY, JSON.stringify(form));
+      } catch {
+        /* ignore */
+      }
+
       if (data.urlPago) {
         vaciar();
         window.location.href = data.urlPago;
@@ -160,9 +185,16 @@ export default function CheckoutPage() {
           </section>
 
           <section className="rounded-xl border border-gray-200 bg-white p-6">
-            <h2 className="mb-4 text-lg font-bold text-gray-900">
-              Dirección de envío
-            </h2>
+            <div className="mb-4 flex items-center justify-between">
+              <h2 className="text-lg font-bold text-gray-900">
+                Dirección de envío
+              </h2>
+              {guardado && (
+                <span className="rounded-full bg-navidad-acento/10 px-3 py-1 text-xs font-medium text-navidad-acento">
+                  ✓ Datos guardados autocompletados
+                </span>
+              )}
+            </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <input
                 required

@@ -19,7 +19,7 @@ interface AuthContextValue {
   usuario: UsuarioSesion | null;
   cargando: boolean;
   login: (email: string, password: string) => Promise<void>;
-  registro: (nombre: string, email: string, password: string) => Promise<void>;
+  registro: (nombre: string, email: string, telefono: string) => Promise<void>;
   logout: () => Promise<void>;
 }
 
@@ -48,11 +48,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUsuario(data.usuario);
   };
 
-  const registro = async (nombre: string, email: string, password: string) => {
+  const registro = async (nombre: string, email: string, telefono: string) => {
     const res = await fetch("/api/auth/registro", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nombre, email, password }),
+      body: JSON.stringify({ nombre, email, telefono }),
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || "Error al registrarse");
