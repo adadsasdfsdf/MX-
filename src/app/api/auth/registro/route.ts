@@ -5,15 +5,19 @@ import { prisma } from "@/lib/prisma";
 import { crearToken, guardarCookieSesion } from "@/lib/auth";
 
 /**
- * Registro simplificado: solo nombre, correo y teléfono.
- * Para no pedir contraseña, se usa el TELÉFONO como contraseña inicial
- * (guardado con hash). Así el cliente puede iniciar sesión luego con su
- * correo y su número de teléfono.
+ * Registro: nombre, correo, teléfono y contraseña.
+ * La contraseña se guarda con hash (bcrypt). El teléfono es opcional como
+ * dato de contacto.
  */
 const schema = z.object({
   nombre: z.string().min(2, "El nombre es muy corto"),
   email: z.string().email("Correo inválido"),
-  telefono: z.string().regex(/^\d{10}$/, "El teléfono debe tener 10 dígitos"),
+  telefono: z
+    .string()
+    .regex(/^\d{10}$/, "El teléfono debe tener 10 dígitos")
+    .optional()
+    .or(z.literal("")),
+  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
 });
 
 export async function POST(request: Request) {
@@ -25,7 +29,7 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   }
-  const { nombre, email, telefono } = parsed.data;
+  const { nombre, email, password } = parsed.data;
 
   const existente = await prisma.usuario.findUnique({ where: { email } });
   if (existente) {
@@ -35,8 +39,7 @@ export async function POST(request: Request) {
     );
   }
 
-  // El teléfono funciona como contraseña inicial.
-  const hash = await bcrypt.hash(telefono, 10);
+  const hash = await bcrypt.hash(password, 10);
   const usuario = await prisma.usuario.create({
     data: { nombre, email, password: hash },
   });

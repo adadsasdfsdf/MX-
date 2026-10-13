@@ -65,10 +65,7 @@ function LoginForm() {
         </div>
         <div>
           <label className="mb-1 block text-sm font-medium text-gray-700">
-            Contraseña{" "}
-            <span className="font-normal text-gray-400">
-              (si te registraste, es tu teléfono)
-            </span>
+            Contraseña
           </label>
           <input
             required
