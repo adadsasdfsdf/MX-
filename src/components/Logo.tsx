@@ -78,7 +78,7 @@ export function Logo({ className = "" }: { className?: string }) {
       <LogoIcon className="h-11 w-11" />
       <span className="flex flex-col leading-none">
         <span className="font-display text-2xl font-black tracking-tight text-navidad-verde">
-          Navi<span className="text-navidad-rojo">dalia</span>
+          Navi<span className="text-navidad-acento">dalia</span>
         </span>
         <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.2em] text-navidad-oro">
           Magia Navideña 🎄

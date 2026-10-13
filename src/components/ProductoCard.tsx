@@ -47,7 +47,7 @@ export default function ProductoCard({ producto }: { producto: Producto }) {
             </span>
           ) : (
             tieneDescuento && (
-              <span className="absolute left-2 top-2 rounded-full bg-navidad-verde px-2.5 py-1 text-xs font-bold text-white shadow">
+              <span className="absolute left-2 top-2 rounded-full bg-navidad-acento px-2.5 py-1 text-xs font-bold text-white shadow">
                 -{pct}%
               </span>
             )
