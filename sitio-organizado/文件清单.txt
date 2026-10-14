@@ -1,0 +1,84 @@
+NAVIDALIA · 文件清单（中文名 ↔ 文件名）
+
+
+== 主要页面 ==
+  首页  →  index.html
+  促销活动页  →  ofertas.html
+  购物车  →  carrito.html
+  搜索页  →  buscar.html
+
+== 分类页面 ==
+  分类-圣诞树  →  categoria-arboles.html
+  分类-球饰与挂件  →  categoria-esferas.html
+  分类-灯串与彩灯  →  categoria-luces.html
+  分类-装饰品  →  categoria-decoracion.html
+  分类-礼品包装  →  categoria-regalos.html
+  分类-节日服装  →  categoria-ropa.html
+  分类-糖果甜点  →  categoria-dulces.html
+
+== 商品-圣诞树 ==
+  商品-Árbol de Navidad 150 cm  →  producto-arbol-150cm.html
+  商品-Árbol Nevado 180 cm  →  producto-arbol-180cm-nevado.html
+  商品-Árbol Premium 210 cm  →  producto-arbol-210cm-premium.html
+  商品-Árbol de Mesa 60 cm  →  producto-arbol-mesa-60cm.html
+  商品-Árbol Blanco 150 cm  →  producto-arbol-blanco-150cm.html
+  商品-Árbol con Luces Integradas 180 cm  →  producto-arbol-conluces-180.html
+
+== 商品-球饰与挂件 ==
+  商品-Set de 6 Esferas Rojas  →  producto-esfera-roja-set6.html
+  商品-Estrella para la Punta del Árbol  →  producto-estrella-arbol.html
+  商品-Paquete de 24 Mini Esferas  →  producto-paquete-esferas-24.html
+  商品-Set de 6 Esferas Doradas  →  producto-esferas-oro-set6.html
+  商品-Set de 4 Esferas de Cristal  →  producto-esferas-cristal-set4.html
+  商品-Adornos de Madera (10 pzas)  →  producto-adornos-madera-set10.html
+  商品-Esferas Personalizables (set 4)  →  producto-esferas-personalizadas.html
+  商品-Copos de Nieve Decorativos (12)  →  producto-copos-nieve-set12.html
+  商品-Picos Decorativos Dorados (6)  →  producto-picos-decorativos-set6.html
+
+== 商品-灯串与彩灯 ==
+  商品-Serie de 100 Luces LED Cálidas  →  producto-serie-luces-100-led.html
+  商品-Serie de 300 Luces LED  →  producto-serie-300-led.html
+  商品-Cortina de Luces LED 3x3m  →  producto-cortina-luces-led.html
+  商品-Luces de Exterior Impermeables  →  producto-luces-exterior-impermeable.html
+  商品-Proyector Láser Navideño  →  producto-proyector-laser-navidad.html
+  商品-Velas LED sin Flama (6 pzas)  →  producto-velas-led-set6.html
+  商品-Guirnalda de Luces a Pilas 5m  →  producto-guirnalda-luces-pilas.html
+
+== 商品-装饰品 ==
+  商品-Calcetín Navideño Decorativo  →  producto-calcetin-navideno.html
+  商品-Guirnalda de Pino Artificial 2m  →  producto-guirnalda-pino-2m.html
+  商品-Corona de Puerta 50 cm  →  producto-corona-puerta-50cm.html
+  商品-Nacimiento de 11 Piezas  →  producto-nacimiento-11-piezas.html
+  商品-Santa Claus Decorativo 40 cm  →  producto-santa-decorativo-40cm.html
+  商品-Reno Luminoso de Jardín  →  producto-reno-luminoso.html
+  商品-Camino de Mesa Navideño  →  producto-camino-mesa-navideno.html
+  商品-Fundas de Cojín Navideñas (2)  →  producto-funda-cojin-set2.html
+  商品-Muérdago Decorativo  →  producto-muerdago-decorativo.html
+  商品-Tapete de Puerta Navideño  →  producto-tapete-puerta-navidad.html
+
+== 商品-礼品包装 ==
+  商品-Moños de Listón Dorado (12 pzas)  →  producto-mono-listones-oro.html
+  商品-Tarjetas de Navidad (20 pzas)  →  producto-tarjetas-navidad-20.html
+  商品-Papel de Regalo (5 rollos)  →  producto-papel-regalo-5rollos.html
+  商品-Cajas de Regalo (set 3)  →  producto-cajas-regalo-set3.html
+  商品-Bolsas de Regalo (10 pzas)  →  producto-bolsas-regalo-10.html
+  商品-Calendario de Adviento  →  producto-calendario-adviento.html
+  商品-Set de Envoltura Completo  →  producto-set-envoltura-completo.html
+  商品-Etiquetas para Regalo (30)  →  producto-etiquetas-regalo-30.html
+
+== 商品-节日服装 ==
+  商品-Gorro de Santa Claus  →  producto-gorro-santa.html
+  商品-Suéter Navideño 'Feo'  →  producto-sueter-feo-navideno.html
+  商品-Pijama Navideña Familiar  →  producto-pijama-familiar-navidad.html
+  商品-Disfraz de Santa Claus (adulto)  →  producto-disfraz-santa-adulto.html
+  商品-Orejeras de Reno  →  producto-orejeras-reno.html
+  商品-Bufanda Navideña Tejida  →  producto-bufanda-navidena.html
+  商品-Mandil Navideño  →  producto-mandil-navideno.html
+
+== 商品-糖果甜点 ==
+  商品-Bastones de Dulce (12 pzas)  →  producto-bastones-dulce-12.html
+  商品-Caja de Chocolates Surtidos  →  producto-caja-chocolates-surtidos.html
+  商品-Kit para Ponche Navideño  →  producto-ponche-navideno-kit.html
+  商品-Galletas de Jengibre (12 pzas)  →  producto-galletas-jengibre.html
+  商品-Kit Casa de Jengibre  →  producto-molde-casa-jengibre.html
+  商品-Kit de Chocolate Caliente  →  producto-chocolate-caliente-kit.html
