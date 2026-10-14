@@ -1,0 +1,1302 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Navidalia · La magia de la Navidad, a tu puerta</title>
+    <meta
+      name="description"
+      content="Navidalia: artículos navideños en México. Árboles, esferas, luces, decoración, regalos y dulces."
+    />
+    <style>
+/* Navidalia · versión estática · tema navideño */
+:root {
+  --rojo: #c1121f;
+  --rojo-osc: #8d0801;
+  --verde: #1b5e3b;
+  --verde-claro: #2d8659;
+  --oro: #d4af37;
+  --crema: #fdf6ec;
+  --gris: #6b7280;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1a1a1a;
+  background: #fff;
+  line-height: 1.5;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+.contenedor { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+/* Barra promo (marquee) */
+.promo { background: var(--rojo); color: #fff; overflow: hidden; white-space: nowrap; }
+.promo__pista { display: inline-block; padding: 8px 0; animation: marquee 28s linear infinite; }
+.promo__pista span { margin: 0 28px; font-size: 14px; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Header */
+.header { position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,.96); backdrop-filter: blur(6px); border-bottom: 1px solid #e5e7eb; }
+.header__fila { display: flex; align-items: center; gap: 16px; padding: 14px 0; }
+.logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.logo__texto { font-size: 24px; font-weight: 900; color: var(--rojo); line-height: 1; }
+.logo__texto b { color: var(--verde); font-weight: 900; }
+.logo__sub { display: block; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--oro); margin-top: 2px; }
+.buscador { flex: 1; position: relative; }
+.buscador input { width: 100%; border: 1px solid #d1d5db; background: #f9fafb; border-radius: 999px; padding: 10px 44px 10px 18px; font-size: 14px; }
+.buscador button { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border: none; border-radius: 999px; background: var(--verde); color: #fff; cursor: pointer; }
+.carrito-btn { position: relative; display: inline-flex; align-items: center; gap: 8px; background: var(--rojo); color: #fff; border: none; border-radius: 10px; padding: 10px 16px; font-weight: 600; font-size: 14px; cursor: pointer; }
+.carrito-btn .cuenta { position: absolute; top: -8px; right: -8px; background: var(--verde); color: #fff; border-radius: 999px; min-width: 20px; height: 20px; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
+.nav-cats { border-top: 1px solid #f3f4f6; }
+.nav-cats__fila { display: flex; gap: 22px; padding: 10px 0; overflow-x: auto; justify-content: center; font-size: 14px; }
+.nav-cats a { color: #4b5563; font-weight: 500; white-space: nowrap; }
+.nav-cats a:hover { color: var(--rojo); }
+.nav-cats a.ofertas { color: var(--rojo); font-weight: 700; }
+
+/* Hero */
+.hero { background: linear-gradient(100deg, var(--rojo-osc), var(--rojo) 55%, var(--verde)); color: #fff; }
+.hero__caja { padding: 72px 0; max-width: 640px; }
+.hero__etq { display: inline-block; background: rgba(255,255,255,.15); padding: 5px 16px; border-radius: 999px; font-size: 14px; }
+.hero h1 { font-size: 48px; font-weight: 900; line-height: 1.1; margin: 16px 0; }
+.hero h1 b { color: var(--oro); }
+.hero p { font-size: 18px; color: #fde8ea; max-width: 520px; }
+.hero__btns { margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* Botones */
+.btn { display: inline-block; border-radius: 10px; padding: 12px 24px; font-weight: 600; cursor: pointer; border: none; font-size: 15px; }
+.btn--blanco { background: #fff; color: var(--rojo); }
+.btn--linea { background: transparent; border: 2px solid #fff; color: #fff; }
+.btn--verde { background: var(--verde); color: #fff; }
+.btn--verde:hover { background: var(--verde-claro); }
+
+/* Secciones */
+.seccion { padding: 48px 0; }
+.seccion__tit { text-align: center; margin-bottom: 28px; }
+.seccion__tit h2 { font-size: 30px; font-weight: 800; }
+.seccion__tit p { color: var(--gris); margin-top: 6px; }
+
+/* Categorías grid */
+.cats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (min-width: 640px) { .cats-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 900px) { .cats-grid { grid-template-columns: repeat(7, 1fr); } }
+.cat-card { display: flex; flex-direction: column; align-items: center; border: 1px solid #e5e7eb; border-radius: 16px; padding: 18px; text-align: center; transition: .2s; }
+.cat-card:hover { transform: translateY(-4px); border-color: var(--verde); box-shadow: 0 8px 20px rgba(0,0,0,.08); }
+.cat-card .emoji { font-size: 34px; }
+.cat-card span.n { margin-top: 8px; font-weight: 600; font-size: 14px; }
+
+/* Productos grid */
+.prod-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (min-width: 768px) { .prod-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1000px) { .prod-grid { grid-template-columns: repeat(5, 1fr); } }
+.prod { display: flex; flex-direction: column; border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; background: #fff; transition: .2s; }
+.prod:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.1); }
+.prod__img { position: relative; aspect-ratio: 1; background: #f3f4f6; overflow: hidden; }
+.prod__img img { width: 100%; height: 100%; object-fit: cover; transition: .3s; }
+.prod:hover .prod__img img { transform: scale(1.05); }
+.prod__etq { position: absolute; left: 8px; top: 8px; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 700; color: #fff; }
+.prod__etq--oferta { background: var(--rojo); }
+.prod__etq--desc { background: var(--verde); }
+.prod__cuerpo { padding: 14px; display: flex; flex-direction: column; flex: 1; }
+.prod__nom { font-weight: 600; font-size: 15px; }
+.prod__desc { color: var(--gris); font-size: 13px; margin-top: 4px; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.prod__precio { margin-top: 10px; }
+.prod__precio .ahora { font-size: 18px; font-weight: 800; }
+.prod__precio .antes { color: #9ca3af; text-decoration: line-through; font-size: 13px; margin-left: 6px; }
+.prod__btn { margin-top: 12px; width: 100%; }
+
+/* Detalle */
+.detalle { display: grid; gap: 32px; grid-template-columns: 1fr; padding: 40px 0; }
+@media (min-width: 768px) { .detalle { grid-template-columns: 1fr 1fr; } }
+.detalle__img { aspect-ratio: 1; border-radius: 14px; overflow: hidden; background: #f3f4f6; }
+.detalle__img img { width: 100%; height: 100%; object-fit: cover; }
+.detalle h1 { font-size: 30px; font-weight: 800; }
+.detalle .precio-grande { font-size: 30px; font-weight: 800; margin-top: 14px; }
+.detalle .antes-grande { color: #9ca3af; text-decoration: line-through; font-size: 18px; margin-right: 10px; }
+.ventajas { margin-top: 24px; background: var(--crema); border-radius: 10px; padding: 16px; font-size: 14px; }
+.ventajas p { margin: 4px 0; }
+
+/* Estrellas */
+.estrellas { position: relative; display: inline-block; font-size: 16px; line-height: 1; }
+.estrellas .base { color: #d1d5db; }
+.estrellas .fill { position: absolute; left: 0; top: 0; overflow: hidden; color: var(--oro); white-space: nowrap; }
+
+/* Reseñas */
+.resena { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; margin-top: 14px; }
+.resena__top { display: flex; justify-content: space-between; align-items: start; }
+.resena .verif { background: rgba(27,94,59,.1); color: var(--verde); border-radius: 999px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin-left: 8px; }
+
+/* Carrito */
+.carrito-item { display: flex; gap: 14px; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+.carrito-item img { width: 90px; height: 90px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
+.cantidad { display: inline-flex; align-items: center; border: 1px solid #d1d5db; border-radius: 8px; }
+.cantidad button { border: none; background: none; padding: 4px 12px; font-size: 16px; cursor: pointer; }
+.resumen { border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px; }
+.resumen .linea { display: flex; justify-content: space-between; margin: 6px 0; font-size: 14px; }
+.resumen .total { font-weight: 800; font-size: 16px; border-top: 1px solid #e5e7eb; padding-top: 10px; margin-top: 10px; }
+
+/* Footer */
+.footer { background: var(--verde); color: #fff; margin-top: 48px; }
+.footer__grid { display: grid; grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
+@media (min-width: 768px) { .footer__grid { grid-template-columns: repeat(4, 1fr); } }
+.footer h3 { font-size: 15px; margin-bottom: 10px; }
+.footer li { list-style: none; font-size: 14px; color: #d1fae5; margin: 6px 0; }
+.footer__copy { border-top: 1px solid rgba(255,255,255,.2); text-align: center; font-size: 12px; color: #d1fae5; padding: 14px; }
+
+/* Nieve */
+.nieve { position: fixed; inset: 0; pointer-events: none; z-index: 60; overflow: hidden; }
+.copo { position: absolute; top: -20px; color: #fff; opacity: .7; animation: caer linear infinite; }
+@keyframes caer { to { transform: translateY(105vh); } }
+
+/* Chat */
+.chat-btn { position: fixed; bottom: 20px; right: 20px; z-index: 50; width: 56px; height: 56px; border-radius: 999px; background: var(--rojo); color: #fff; font-size: 24px; border: none; cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,.2); }
+.chat-caja { position: fixed; bottom: 88px; right: 20px; z-index: 50; width: 340px; max-width: calc(100vw - 40px); background: #fff; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,.25); overflow: hidden; display: none; }
+.chat-caja.abierto { display: block; }
+.chat-caja__top { background: var(--verde); color: #fff; padding: 12px 16px; font-weight: 600; }
+.chat-caja__cuerpo { padding: 16px; background: var(--crema); font-size: 14px; min-height: 120px; }
+
+.aviso { background: var(--crema); border-radius: 10px; padding: 14px; font-size: 13px; color: var(--gris); margin: 16px 0; text-align: center; }
+
+</style>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231b5e3b'/><ellipse cx='32' cy='38' rx='15' ry='13' fill='%23c68642'/><circle cx='32' cy='44' r='4' fill='%23c1121f'/></svg>"
+    />
+  </head>
+  <body>
+    <!-- Nieve -->
+    <div class="nieve" id="nieve" aria-hidden="true"></div>
+
+    <!-- Barra promo -->
+    <div class="promo">
+      <div class="promo__pista" id="promoPista"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="contenedor header__fila">
+        <a href="#/" class="logo">
+          <span style="font-size: 32px">🦌</span>
+          <span>
+            <span class="logo__texto">Navi<b>dalia</b></span>
+            <span class="logo__sub">Magia Navideña 🎄</span>
+          </span>
+        </a>
+        <form class="buscador" onsubmit="buscar(event)">
+          <input
+            id="inputBuscar"
+            type="text"
+            placeholder="Buscar árboles, esferas, luces, regalos..."
+          />
+          <button type="submit" aria-label="Buscar">🔍</button>
+        </form>
+        <button class="carrito-btn" onclick="location.hash='#/carrito'">
+          🛒 <span>Carrito</span>
+          <span class="cuenta" id="contadorCarrito" style="display: none">0</span>
+        </button>
+      </div>
+      <nav class="nav-cats">
+        <div class="contenedor nav-cats__fila" id="navCats"></div>
+      </nav>
+    </header>
+
+    <!-- Contenido dinámico -->
+    <main id="app"></main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="contenedor footer__grid">
+        <div>
+          <div class="logo">
+            <span style="font-size: 28px">🦌</span>
+            <span class="logo__texto" style="color: #fff"
+              >Navi<b style="color: var(--oro)">dalia</b></span
+            >
+          </div>
+          <p style="margin-top: 10px; font-size: 14px; color: #d1fae5">
+            La magia de la Navidad, a tu puerta. Todo para decorar y celebrar
+            las fiestas. 🎄
+          </p>
+        </div>
+        <div>
+          <h3>Categorías</h3>
+          <ul id="footerCats"></ul>
+        </div>
+        <div>
+          <h3>Ayuda</h3>
+          <ul>
+            <li>Envíos y entregas</li>
+            <li>Devoluciones</li>
+            <li>Facturación (CFDI)</li>
+            <li>Contáctanos</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Métodos de pago</h3>
+          <ul>
+            <li>💳 Tarjeta de crédito</li>
+            <li>💳 Tarjeta de débito</li>
+            <li>🎁 Meses sin intereses</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__copy">
+        © <span id="anio"></span> Navidalia · Hecho con 💚 en México · Precios
+        en pesos mexicanos (MXN), IVA incluido · Versión de demostración
+      </div>
+    </footer>
+
+    <!-- Chat de soporte (demo) -->
+    <button class="chat-btn" onclick="toggleChat()" aria-label="Soporte">🎅</button>
+    <div class="chat-caja" id="chatCaja">
+      <div class="chat-caja__top">🦌 Soporte Navidalia</div>
+      <div class="chat-caja__cuerpo">
+        <p>¡Hola y felices fiestas! 🎄</p>
+        <p style="margin-top: 8px">
+          Esta es una tienda de demostración. Para dudas escríbenos a
+          <strong>hola@navidalia.mx</strong>.
+        </p>
+      </div>
+    </div>
+
+    <script>
+// Datos del catálogo (generado automáticamente)
+const CATEGORIAS = [
+  {
+    "id": "arboles",
+    "nombre": "Árboles",
+    "emoji": "🎄"
+  },
+  {
+    "id": "esferas",
+    "nombre": "Esferas y Adornos",
+    "emoji": "🔴"
+  },
+  {
+    "id": "luces",
+    "nombre": "Luces y Series",
+    "emoji": "✨"
+  },
+  {
+    "id": "decoracion",
+    "nombre": "Decoración",
+    "emoji": "🏠"
+  },
+  {
+    "id": "regalos",
+    "nombre": "Regalos",
+    "emoji": "🎁"
+  },
+  {
+    "id": "ropa",
+    "nombre": "Ropa Navideña",
+    "emoji": "🧦"
+  },
+  {
+    "id": "dulces",
+    "nombre": "Dulces y Repostería",
+    "emoji": "🍬"
+  }
+];
+const PRODUCTOS = [
+  {
+    "slug": "esfera-roja-set6",
+    "nombre": "Set de 6 Esferas Rojas",
+    "descripcion": "Set de 6 esferas navideñas rojas brillantes, irrompibles. ¡Precio de lanzamiento!",
+    "precio": 60,
+    "precioAnterior": 120,
+    "categoria": "esferas",
+    "imagen": "https://picsum.photos/seed/navidalia-esfera-roja-set6/800/800",
+    "stock": 200,
+    "gancho": true,
+    "destacado": true
+  },
+  {
+    "slug": "serie-luces-100-led",
+    "nombre": "Serie de 100 Luces LED Cálidas",
+    "descripcion": "Serie de 100 luces LED color cálido, 10 metros. Ideal para el árbol. ¡Oferta!",
+    "precio": 90,
+    "precioAnterior": 180,
+    "categoria": "luces",
+    "imagen": "https://picsum.photos/seed/navidalia-serie-luces-100-led/800/800",
+    "stock": 150,
+    "gancho": true,
+    "destacado": true
+  },
+  {
+    "slug": "gorro-santa",
+    "nombre": "Gorro de Santa Claus",
+    "descripcion": "Clásico gorro rojo de Santa con pompón blanco, felpa suave. ¡Súper precio!",
+    "precio": 45,
+    "precioAnterior": 90,
+    "categoria": "ropa",
+    "imagen": "https://picsum.photos/seed/navidalia-gorro-santa/800/800",
+    "stock": 300,
+    "gancho": true,
+    "destacado": true
+  },
+  {
+    "slug": "calcetin-navideno",
+    "nombre": "Calcetín Navideño Decorativo",
+    "descripcion": "Calcetín para la chimenea, bordado con motivos navideños. ¡Precio gancho!",
+    "precio": 50,
+    "precioAnterior": 100,
+    "categoria": "decoracion",
+    "imagen": "https://picsum.photos/seed/navidalia-calcetin-navideno/800/800",
+    "stock": 250,
+    "gancho": true,
+    "destacado": false
+  },
+  {
+    "slug": "mono-listones-oro",
+    "nombre": "Moños de Listón Dorado (12 pzas)",
+    "descripcion": "12 moños dorados autoadheribles para regalos y decoración. ¡Oferta!",
+    "precio": 40,
+    "precioAnterior": 80,
+    "categoria": "regalos",
+    "imagen": "https://picsum.photos/seed/navidalia-mono-listones-oro/800/800",
+    "stock": 220,
+    "gancho": true,
+    "destacado": false
+  },
+  {
+    "slug": "estrella-arbol",
+    "nombre": "Estrella para la Punta del Árbol",
+    "descripcion": "Estrella dorada con luz LED para coronar tu árbol. ¡Precio especial!",
+    "precio": 75,
+    "precioAnterior": 150,
+    "categoria": "esferas",
+    "imagen": "https://picsum.photos/seed/navidalia-estrella-arbol/800/800",
+    "stock": 180,
+    "gancho": true,
+    "destacado": true
+  },
+  {
+    "slug": "paquete-esferas-24",
+    "nombre": "Paquete de 24 Mini Esferas",
+    "descripcion": "24 mini esferas surtidas en rojo, oro y verde. ¡Lanzamiento!",
+    "precio": 80,
+    "precioAnterior": 160,
+    "categoria": "esferas",
+    "imagen": "https://picsum.photos/seed/navidalia-paquete-esferas-24/800/800",
+    "stock": 160,
+    "gancho": true,
+    "destacado": false
+  },
+  {
+    "slug": "bastones-dulce-12",
+    "nombre": "Bastones de Dulce (12 pzas)",
+    "descripcion": "12 bastones de caramelo de menta, clásicos de Navidad. ¡Oferta!",
+    "precio": 35,
+    "precioAnterior": 70,
+    "categoria": "dulces",
+    "imagen": "https://picsum.photos/seed/navidalia-bastones-dulce-12/800/800",
+    "stock": 400,
+    "gancho": true,
+    "destacado": false
+  },
+  {
+    "slug": "guirnalda-pino-2m",
+    "nombre": "Guirnalda de Pino Artificial 2m",
+    "descripcion": "Guirnalda verde de 2 metros para escaleras y puertas. ¡Precio gancho!",
+    "precio": 100,
+    "precioAnterior": 200,
+    "categoria": "decoracion",
+    "imagen": "https://picsum.photos/seed/navidalia-guirnalda-pino-2m/800/800",
+    "stock": 140,
+    "gancho": true,
+    "destacado": true
+  },
+  {
+    "slug": "tarjetas-navidad-20",
+    "nombre": "Tarjetas de Navidad (20 pzas)",
+    "descripcion": "20 tarjetas navideñas con sobres, diseños variados. ¡Súper oferta!",
+    "precio": 30,
+    "precioAnterior": 60,
+    "categoria": "regalos",
+    "imagen": "https://picsum.photos/seed/navidalia-tarjetas-navidad-20/800/800",
+    "stock": 350,
+    "gancho": true,
+    "destacado": false
+  },
+  {
+    "slug": "arbol-150cm",
+    "nombre": "Árbol de Navidad 150 cm",
+    "descripcion": "Árbol artificial de 150 cm, frondoso, fácil de armar.",
+    "precio": 960,
+    "precioAnterior": 1200,
+    "categoria": "arboles",
+    "imagen": "https://picsum.photos/seed/navidalia-arbol-150cm/800/800",
+    "stock": 40,
+    "gancho": false,
+    "destacado": true
+  },
+  {
+    "slug": "arbol-180cm-nevado",
+    "nombre": "Árbol Nevado 180 cm",
+    "descripcion": "Árbol artificial de 180 cm con efecto nieve en las puntas.",
+    "precio": 1440,
+    "precioAnterior": 1800,
+    "categoria": "arboles",
+    "imagen": "https://picsum.photos/seed/navidalia-arbol-180cm-nevado/800/800",
+    "stock": 30,
+    "gancho": false,
+    "destacado": true
+  },
+  {
+    "slug": "arbol-210cm-premium",
+    "nombre": "Árbol Premium 210 cm",
+    "descripcion": "Árbol artificial premium de 210 cm, ultra frondoso, base metálica.",
+    "precio": 2240,
+    "precioAnterior": 2800,
+    "categoria": "arboles",
+    "imagen": "https://picsum.photos/seed/navidalia-arbol-210cm-premium/800/800",
+    "stock": 18,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "arbol-mesa-60cm",
+    "nombre": "Árbol de Mesa 60 cm",
+    "descripcion": "Mini árbol de 60 cm decorado, perfecto para escritorio o mesa.",
+    "precio": 360,
+    "precioAnterior": 450,
+    "categoria": "arboles",
+    "imagen": "https://picsum.photos/seed/navidalia-arbol-mesa-60cm/800/800",
+    "stock": 80,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "arbol-blanco-150cm",
+    "nombre": "Árbol Blanco 150 cm",
+    "descripcion": "Árbol artificial blanco de 150 cm, elegante y moderno.",
+    "precio": 1200,
+    "precioAnterior": 1500,
+    "categoria": "arboles",
+    "imagen": "https://picsum.photos/seed/navidalia-arbol-blanco-150cm/800/800",
+    "stock": 25,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "arbol-conluces-180",
+    "nombre": "Árbol con Luces Integradas 180 cm",
+    "descripcion": "Árbol de 180 cm con 300 luces LED ya integradas.",
+    "precio": 1920,
+    "precioAnterior": 2400,
+    "categoria": "arboles",
+    "imagen": "https://picsum.photos/seed/navidalia-arbol-conluces-180/800/800",
+    "stock": 20,
+    "gancho": false,
+    "destacado": true
+  },
+  {
+    "slug": "esferas-oro-set6",
+    "nombre": "Set de 6 Esferas Doradas",
+    "descripcion": "6 esferas doradas con acabado brillante y mate combinados.",
+    "precio": 112,
+    "precioAnterior": 140,
+    "categoria": "esferas",
+    "imagen": "https://picsum.photos/seed/navidalia-esferas-oro-set6/800/800",
+    "stock": 120,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "esferas-cristal-set4",
+    "nombre": "Set de 4 Esferas de Cristal",
+    "descripcion": "4 esferas de cristal soplado a mano, decoración fina.",
+    "precio": 256,
+    "precioAnterior": 320,
+    "categoria": "esferas",
+    "imagen": "https://picsum.photos/seed/navidalia-esferas-cristal-set4/800/800",
+    "stock": 60,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "adornos-madera-set10",
+    "nombre": "Adornos de Madera (10 pzas)",
+    "descripcion": "10 figuras de madera natural: renos, estrellas y casitas.",
+    "precio": 144,
+    "precioAnterior": 180,
+    "categoria": "esferas",
+    "imagen": "https://picsum.photos/seed/navidalia-adornos-madera-set10/800/800",
+    "stock": 90,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "esferas-personalizadas",
+    "nombre": "Esferas Personalizables (set 4)",
+    "descripcion": "4 esferas transparentes para rellenar y personalizar.",
+    "precio": 128,
+    "precioAnterior": 160,
+    "categoria": "esferas",
+    "imagen": "https://picsum.photos/seed/navidalia-esferas-personalizadas/800/800",
+    "stock": 100,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "copos-nieve-set12",
+    "nombre": "Copos de Nieve Decorativos (12)",
+    "descripcion": "12 copos de nieve plateados para colgar en el árbol.",
+    "precio": 104,
+    "precioAnterior": 130,
+    "categoria": "esferas",
+    "imagen": "https://picsum.photos/seed/navidalia-copos-nieve-set12/800/800",
+    "stock": 110,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "picos-decorativos-set6",
+    "nombre": "Picos Decorativos Dorados (6)",
+    "descripcion": "6 picos dorados y rojos para dar volumen al árbol.",
+    "precio": 120,
+    "precioAnterior": 150,
+    "categoria": "esferas",
+    "imagen": "https://picsum.photos/seed/navidalia-picos-decorativos-set6/800/800",
+    "stock": 85,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "serie-300-led",
+    "nombre": "Serie de 300 Luces LED",
+    "descripcion": "300 luces LED multicolor, 30 metros, 8 modos de parpadeo.",
+    "precio": 360,
+    "precioAnterior": 450,
+    "categoria": "luces",
+    "imagen": "https://picsum.photos/seed/navidalia-serie-300-led/800/800",
+    "stock": 100,
+    "gancho": false,
+    "destacado": true
+  },
+  {
+    "slug": "cortina-luces-led",
+    "nombre": "Cortina de Luces LED 3x3m",
+    "descripcion": "Cortina de luces de 3x3 metros, ideal para ventanas.",
+    "precio": 440,
+    "precioAnterior": 550,
+    "categoria": "luces",
+    "imagen": "https://picsum.photos/seed/navidalia-cortina-luces-led/800/800",
+    "stock": 70,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "luces-exterior-impermeable",
+    "nombre": "Luces de Exterior Impermeables",
+    "descripcion": "Serie de 200 luces LED resistentes al agua para exteriores.",
+    "precio": 384,
+    "precioAnterior": 480,
+    "categoria": "luces",
+    "imagen": "https://picsum.photos/seed/navidalia-luces-exterior-impermeable/800/800",
+    "stock": 65,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "proyector-laser-navidad",
+    "nombre": "Proyector Láser Navideño",
+    "descripcion": "Proyector de figuras navideñas para fachada, control remoto.",
+    "precio": 712,
+    "precioAnterior": 890,
+    "categoria": "luces",
+    "imagen": "https://picsum.photos/seed/navidalia-proyector-laser-navidad/800/800",
+    "stock": 35,
+    "gancho": false,
+    "destacado": true
+  },
+  {
+    "slug": "velas-led-set6",
+    "nombre": "Velas LED sin Flama (6 pzas)",
+    "descripcion": "6 velas LED con parpadeo realista, a pilas, seguras.",
+    "precio": 176,
+    "precioAnterior": 220,
+    "categoria": "luces",
+    "imagen": "https://picsum.photos/seed/navidalia-velas-led-set6/800/800",
+    "stock": 95,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "guirnalda-luces-pilas",
+    "nombre": "Guirnalda de Luces a Pilas 5m",
+    "descripcion": "Guirnalda de 50 luces micro LED a pilas, alambre moldeable.",
+    "precio": 128,
+    "precioAnterior": 160,
+    "categoria": "luces",
+    "imagen": "https://picsum.photos/seed/navidalia-guirnalda-luces-pilas/800/800",
+    "stock": 130,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "corona-puerta-50cm",
+    "nombre": "Corona de Puerta 50 cm",
+    "descripcion": "Corona navideña de 50 cm con piñas, moños y bayas rojas.",
+    "precio": 336,
+    "precioAnterior": 420,
+    "categoria": "decoracion",
+    "imagen": "https://picsum.photos/seed/navidalia-corona-puerta-50cm/800/800",
+    "stock": 75,
+    "gancho": false,
+    "destacado": true
+  },
+  {
+    "slug": "nacimiento-11-piezas",
+    "nombre": "Nacimiento de 11 Piezas",
+    "descripcion": "Set de nacimiento con 11 figuras de resina pintadas a mano.",
+    "precio": 520,
+    "precioAnterior": 650,
+    "categoria": "decoracion",
+    "imagen": "https://picsum.photos/seed/navidalia-nacimiento-11-piezas/800/800",
+    "stock": 40,
+    "gancho": false,
+    "destacado": true
+  },
+  {
+    "slug": "santa-decorativo-40cm",
+    "nombre": "Santa Claus Decorativo 40 cm",
+    "descripcion": "Figura de Santa Claus de 40 cm, felpa y detalles finos.",
+    "precio": 304,
+    "precioAnterior": 380,
+    "categoria": "decoracion",
+    "imagen": "https://picsum.photos/seed/navidalia-santa-decorativo-40cm/800/800",
+    "stock": 55,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "reno-luminoso",
+    "nombre": "Reno Luminoso de Jardín",
+    "descripcion": "Reno de alambre con luces LED para jardín o entrada.",
+    "precio": 576,
+    "precioAnterior": 720,
+    "categoria": "decoracion",
+    "imagen": "https://picsum.photos/seed/navidalia-reno-luminoso/800/800",
+    "stock": 30,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "camino-mesa-navideno",
+    "nombre": "Camino de Mesa Navideño",
+    "descripcion": "Camino de mesa bordado con motivos navideños, 180 cm.",
+    "precio": 192,
+    "precioAnterior": 240,
+    "categoria": "decoracion",
+    "imagen": "https://picsum.photos/seed/navidalia-camino-mesa-navideno/800/800",
+    "stock": 85,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "funda-cojin-set2",
+    "nombre": "Fundas de Cojín Navideñas (2)",
+    "descripcion": "Par de fundas de cojín con diseños festivos, 45x45 cm.",
+    "precio": 160,
+    "precioAnterior": 200,
+    "categoria": "decoracion",
+    "imagen": "https://picsum.photos/seed/navidalia-funda-cojin-set2/800/800",
+    "stock": 100,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "muerdago-decorativo",
+    "nombre": "Muérdago Decorativo",
+    "descripcion": "Ramo de muérdago artificial con moño rojo para colgar.",
+    "precio": 72,
+    "precioAnterior": 90,
+    "categoria": "decoracion",
+    "imagen": "https://picsum.photos/seed/navidalia-muerdago-decorativo/800/800",
+    "stock": 150,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "tapete-puerta-navidad",
+    "nombre": "Tapete de Puerta Navideño",
+    "descripcion": "Tapete de entrada antiderrapante con diseño navideño.",
+    "precio": 144,
+    "precioAnterior": 180,
+    "categoria": "decoracion",
+    "imagen": "https://picsum.photos/seed/navidalia-tapete-puerta-navidad/800/800",
+    "stock": 90,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "papel-regalo-5rollos",
+    "nombre": "Papel de Regalo (5 rollos)",
+    "descripcion": "5 rollos de papel de regalo con diseños navideños surtidos.",
+    "precio": 120,
+    "precioAnterior": 150,
+    "categoria": "regalos",
+    "imagen": "https://picsum.photos/seed/navidalia-papel-regalo-5rollos/800/800",
+    "stock": 200,
+    "gancho": false,
+    "destacado": true
+  },
+  {
+    "slug": "cajas-regalo-set3",
+    "nombre": "Cajas de Regalo (set 3)",
+    "descripcion": "3 cajas de regalo decorativas de distintos tamaños.",
+    "precio": 144,
+    "precioAnterior": 180,
+    "categoria": "regalos",
+    "imagen": "https://picsum.photos/seed/navidalia-cajas-regalo-set3/800/800",
+    "stock": 120,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "bolsas-regalo-10",
+    "nombre": "Bolsas de Regalo (10 pzas)",
+    "descripcion": "10 bolsas de regalo con asas, diseños festivos.",
+    "precio": 104,
+    "precioAnterior": 130,
+    "categoria": "regalos",
+    "imagen": "https://picsum.photos/seed/navidalia-bolsas-regalo-10/800/800",
+    "stock": 180,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "calendario-adviento",
+    "nombre": "Calendario de Adviento",
+    "descripcion": "Calendario de adviento con 24 cajitas para sorpresas.",
+    "precio": 280,
+    "precioAnterior": 350,
+    "categoria": "regalos",
+    "imagen": "https://picsum.photos/seed/navidalia-calendario-adviento/800/800",
+    "stock": 60,
+    "gancho": false,
+    "destacado": true
+  },
+  {
+    "slug": "set-envoltura-completo",
+    "nombre": "Set de Envoltura Completo",
+    "descripcion": "Papel, listones, moños y etiquetas en un solo set.",
+    "precio": 224,
+    "precioAnterior": 280,
+    "categoria": "regalos",
+    "imagen": "https://picsum.photos/seed/navidalia-set-envoltura-completo/800/800",
+    "stock": 90,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "etiquetas-regalo-30",
+    "nombre": "Etiquetas para Regalo (30)",
+    "descripcion": "30 etiquetas adhesivas para personalizar tus regalos.",
+    "precio": 40,
+    "precioAnterior": 50,
+    "categoria": "regalos",
+    "imagen": "https://picsum.photos/seed/navidalia-etiquetas-regalo-30/800/800",
+    "stock": 300,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "sueter-feo-navideno",
+    "nombre": "Suéter Navideño 'Feo'",
+    "descripcion": "El clásico 'ugly sweater' con reno y luces. ¡Diversión asegurada!",
+    "precio": 336,
+    "precioAnterior": 420,
+    "categoria": "ropa",
+    "imagen": "https://picsum.photos/seed/navidalia-sueter-feo-navideno/800/800",
+    "stock": 70,
+    "gancho": false,
+    "destacado": true
+  },
+  {
+    "slug": "pijama-familiar-navidad",
+    "nombre": "Pijama Navideña Familiar",
+    "descripcion": "Pijama de franela con estampado navideño, varias tallas.",
+    "precio": 304,
+    "precioAnterior": 380,
+    "categoria": "ropa",
+    "imagen": "https://picsum.photos/seed/navidalia-pijama-familiar-navidad/800/800",
+    "stock": 80,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "disfraz-santa-adulto",
+    "nombre": "Disfraz de Santa Claus (adulto)",
+    "descripcion": "Disfraz completo de Santa: traje, gorro, cinturón y barba.",
+    "precio": 520,
+    "precioAnterior": 650,
+    "categoria": "ropa",
+    "imagen": "https://picsum.photos/seed/navidalia-disfraz-santa-adulto/800/800",
+    "stock": 40,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "orejeras-reno",
+    "nombre": "Orejeras de Reno",
+    "descripcion": "Diadema con orejas y cuernos de reno, felpa suave.",
+    "precio": 88,
+    "precioAnterior": 110,
+    "categoria": "ropa",
+    "imagen": "https://picsum.photos/seed/navidalia-orejeras-reno/800/800",
+    "stock": 160,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "bufanda-navidena",
+    "nombre": "Bufanda Navideña Tejida",
+    "descripcion": "Bufanda tejida con motivos navideños, cálida y suave.",
+    "precio": 160,
+    "precioAnterior": 200,
+    "categoria": "ropa",
+    "imagen": "https://picsum.photos/seed/navidalia-bufanda-navidena/800/800",
+    "stock": 100,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "mandil-navideno",
+    "nombre": "Mandil Navideño",
+    "descripcion": "Mandil de cocina con diseño festivo, ideal para la cena.",
+    "precio": 128,
+    "precioAnterior": 160,
+    "categoria": "ropa",
+    "imagen": "https://picsum.photos/seed/navidalia-mandil-navideno/800/800",
+    "stock": 120,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "caja-chocolates-surtidos",
+    "nombre": "Caja de Chocolates Surtidos",
+    "descripcion": "Caja de 24 chocolates finos surtidos, edición navideña.",
+    "precio": 256,
+    "precioAnterior": 320,
+    "categoria": "dulces",
+    "imagen": "https://picsum.photos/seed/navidalia-caja-chocolates-surtidos/800/800",
+    "stock": 110,
+    "gancho": false,
+    "destacado": true
+  },
+  {
+    "slug": "ponche-navideno-kit",
+    "nombre": "Kit para Ponche Navideño",
+    "descripcion": "Kit con frutas deshidratadas, canela y tejocote para ponche.",
+    "precio": 144,
+    "precioAnterior": 180,
+    "categoria": "dulces",
+    "imagen": "https://picsum.photos/seed/navidalia-ponche-navideno-kit/800/800",
+    "stock": 90,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "galletas-jengibre",
+    "nombre": "Galletas de Jengibre (12 pzas)",
+    "descripcion": "12 galletas de jengibre decoradas, caja de regalo.",
+    "precio": 120,
+    "precioAnterior": 150,
+    "categoria": "dulces",
+    "imagen": "https://picsum.photos/seed/navidalia-galletas-jengibre/800/800",
+    "stock": 130,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "molde-casa-jengibre",
+    "nombre": "Kit Casa de Jengibre",
+    "descripcion": "Kit para armar y decorar tu propia casita de jengibre.",
+    "precio": 200,
+    "precioAnterior": 250,
+    "categoria": "dulces",
+    "imagen": "https://picsum.photos/seed/navidalia-molde-casa-jengibre/800/800",
+    "stock": 70,
+    "gancho": false,
+    "destacado": false
+  },
+  {
+    "slug": "chocolate-caliente-kit",
+    "nombre": "Kit de Chocolate Caliente",
+    "descripcion": "Chocolate, malvaviscos y canela para noches navideñas.",
+    "precio": 152,
+    "precioAnterior": 190,
+    "categoria": "dulces",
+    "imagen": "https://picsum.photos/seed/navidalia-chocolate-caliente-kit/800/800",
+    "stock": 100,
+    "gancho": false,
+    "destacado": false
+  }
+];
+
+/* Navidalia · versión estática · lógica de la tienda (sin servidor) */
+
+const IMG_FALLBACK = "https://picsum.photos/seed/navidalia-fallback/600/600";
+const ENVIO_GRATIS = 799;
+const ENVIO_COSTO = 99;
+
+/* ---------- utilidades ---------- */
+const money = (n) =>
+  "MX$" +
+  new Intl.NumberFormat("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n) +
+  " MXN";
+
+const esc = (s) =>
+  String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+const porProducto = (slug) => PRODUCTOS.find((p) => p.slug === slug);
+const porCategoria = (id) => PRODUCTOS.filter((p) => p.categoria === id);
+
+/* ---------- carrito (localStorage) ---------- */
+const CART_KEY = "navidalia-estatico-carrito";
+function getCarrito() {
+  try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { return []; }
+}
+function setCarrito(c) {
+  localStorage.setItem(CART_KEY, JSON.stringify(c));
+  actualizarContador();
+}
+function agregarCarrito(slug, cant = 1) {
+  const c = getCarrito();
+  const item = c.find((i) => i.slug === slug);
+  if (item) item.cantidad += cant;
+  else c.push({ slug, cantidad: cant });
+  setCarrito(c);
+  actualizarContador(true);
+}
+function actualizarContador(animar) {
+  const n = getCarrito().reduce((a, i) => a + i.cantidad, 0);
+  const el = document.getElementById("contadorCarrito");
+  el.textContent = n;
+  el.style.display = n > 0 ? "flex" : "none";
+}
+
+/* ---------- estrellas (promedio fijo por producto para la demo) ---------- */
+function promedioFalso(slug) {
+  let h = 0;
+  for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0;
+  return 4.3 + (h % 7) / 10; // entre 4.3 y 4.9
+}
+function totalResenasFalso(slug, gancho) {
+  let h = 0;
+  for (let i = 0; i < slug.length; i++) h = (h * 17 + slug.charCodeAt(i)) >>> 0;
+  return gancho ? 80 + (h % 70) : 30 + (h % 60);
+}
+function estrellasHTML(valor) {
+  const pct = Math.max(0, Math.min(100, (valor / 5) * 100));
+  return `<span class="estrellas"><span class="base">★★★★★</span><span class="fill" style="width:${pct}%">★★★★★</span></span>`;
+}
+
+const RESENAS_DEMO = [
+  { a: "María G.", c: 5, t: "¡Quedó precioso en mi sala! Le dio un ambiente súper navideño a la casa." },
+  { a: "José L.", c: 5, t: "Mejor de lo que esperaba por el precio. La calidad me sorprendió." },
+  { a: "Fernanda S.", c: 5, t: "Mis hijos quedaron encantados. ¡Pura magia navideña! 🎄" },
+  { a: "Carlos H.", c: 4, t: "Llegó rápido y bien empacado. Muy recomendable para la temporada." },
+  { a: "Ana P.", c: 5, t: "Ideal para el intercambio navideño. Quedé como reina con el regalo. 🎁" },
+  { a: "Miguel Á.", c: 4, t: "Buen producto, colores vivos. Lo volvería a comprar." },
+  { a: "Paola N.", c: 3, t: "Bonito, aunque lo esperaba un poco más grande. Igual cumple." },
+];
+
+/* ---------- tarjeta de producto ---------- */
+function cardProducto(p) {
+  const desc = p.precioAnterior && p.precioAnterior > p.precio;
+  const pct = desc ? Math.round(((p.precioAnterior - p.precio) / p.precioAnterior) * 100) : 0;
+  let etq = "";
+  if (p.gancho) etq = `<span class="prod__etq prod__etq--oferta">🔥 OFERTA -${pct}%</span>`;
+  else if (desc) etq = `<span class="prod__etq prod__etq--desc">-${pct}%</span>`;
+  return `
+    <div class="prod">
+      <a class="prod__img" href="#/producto/${p.slug}">
+        ${etq}
+        <img src="${esc(p.imagen)}" alt="${esc(p.nombre)}" loading="lazy"
+             onerror="this.src='${IMG_FALLBACK}'" />
+      </a>
+      <div class="prod__cuerpo">
+        <a href="#/producto/${p.slug}"><div class="prod__nom">${esc(p.nombre)}</div></a>
+        <div class="prod__desc">${esc(p.descripcion)}</div>
+        <div class="prod__precio">
+          <span class="ahora">${money(p.precio)}</span>
+          ${desc ? `<span class="antes">${money(p.precioAnterior)}</span>` : ""}
+        </div>
+        <button class="btn btn--verde prod__btn" onclick="agregarCarrito('${p.slug}')">Agregar al carrito</button>
+      </div>
+    </div>`;
+}
+
+/* ---------- páginas ---------- */
+function vistaInicio() {
+  const destacados = PRODUCTOS.filter((p) => p.destacado).slice(0, 10);
+  const gancho = PRODUCTOS.filter((p) => p.gancho).slice(0, 5);
+  return `
+    <section class="hero">
+      <div class="contenedor hero__caja">
+        <span class="hero__etq">🎄 Temporada Navideña</span>
+        <h1>La magia de la Navidad, <b>a tu puerta</b></h1>
+        <p>Árboles, esferas, luces, regalos y todo para decorar y celebrar las fiestas. Envíos a toda la República Mexicana.</p>
+        <div class="hero__btns">
+          <a class="btn btn--blanco" href="#/categoria/arboles">Explorar productos</a>
+          <a class="btn btn--linea" href="#/ofertas">Ver ofertas 🔥</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="seccion__tit"><h2>Explora por categoría</h2><p>Todo para una Navidad mágica 🎄</p></div>
+        <div class="cats-grid">
+          ${CATEGORIAS.map((c) => `
+            <a class="cat-card" href="#/categoria/${c.id}">
+              <span class="emoji">${c.emoji}</span>
+              <span class="n">${esc(c.nombre)}</span>
+            </a>`).join("")}
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" style="background:var(--crema)">
+      <div class="contenedor">
+        <div class="seccion__tit"><h2 style="color:var(--rojo)">🔥 Ofertas de temporada</h2><p>¡Hasta 50% de descuento!</p></div>
+        <div class="prod-grid">${gancho.map(cardProducto).join("")}</div>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="seccion__tit"><h2>Favoritos de la temporada ⭐</h2></div>
+        <div class="prod-grid">${destacados.map(cardProducto).join("")}</div>
+      </div>
+    </section>`;
+}
+
+function vistaCategoria(id) {
+  const cat = CATEGORIAS.find((c) => c.id === id);
+  if (!cat) return vistaInicio();
+  const prods = porCategoria(id);
+  return `
+    <section class="seccion"><div class="contenedor">
+      <div class="seccion__tit"><h2>${cat.emoji} ${esc(cat.nombre)}</h2></div>
+      <div class="prod-grid">${prods.map(cardProducto).join("")}</div>
+    </div></section>`;
+}
+
+function vistaOfertas() {
+  const gancho = PRODUCTOS.filter((p) => p.gancho);
+  const resto = PRODUCTOS.filter((p) => !p.gancho && p.precioAnterior > p.precio);
+  return `
+    <section class="hero"><div class="contenedor hero__caja" style="text-align:center;margin:0 auto">
+      <span class="hero__etq">🎄 Ofertas de temporada</span>
+      <h1>¡Hasta <b>50% de descuento</b>!</h1>
+      <p style="margin:0 auto">Las mejores ofertas gancho y 20% en todo el catálogo. ¡Decora tu Navidad por menos!</p>
+    </div></section>
+    <section class="seccion"><div class="contenedor">
+      <div class="seccion__tit"><h2 style="color:var(--rojo)">🔥 Ofertas gancho (50% off)</h2></div>
+      <div class="prod-grid">${gancho.map(cardProducto).join("")}</div>
+    </div></section>
+    <section class="seccion"><div class="contenedor">
+      <div class="seccion__tit"><h2>Más ofertas (20% off)</h2></div>
+      <div class="prod-grid">${resto.map(cardProducto).join("")}</div>
+    </div></section>`;
+}
+
+function vistaBuscar(q) {
+  const t = (q || "").toLowerCase();
+  const res = PRODUCTOS.filter(
+    (p) => p.nombre.toLowerCase().includes(t) || p.descripcion.toLowerCase().includes(t),
+  );
+  return `
+    <section class="seccion"><div class="contenedor">
+      <div class="seccion__tit"><h2>Resultados para "${esc(q)}"</h2><p>${res.length} producto(s)</p></div>
+      <div class="prod-grid">${res.map(cardProducto).join("") || '<p style="text-align:center;color:var(--gris)">Sin resultados.</p>'}</div>
+    </div></section>`;
+}
+
+function vistaProducto(slug) {
+  const p = porProducto(slug);
+  if (!p) return vistaInicio();
+  const desc = p.precioAnterior && p.precioAnterior > p.precio;
+  const prom = promedioFalso(p.slug);
+  const totR = totalResenasFalso(p.slug, p.gancho);
+  const resenas = RESENAS_DEMO.slice(0, 5)
+    .map((r) => `
+      <div class="resena">
+        <div class="resena__top">
+          <div>
+            <strong>${r.a}</strong><span class="verif">✓ Compra verificada</span>
+            <div>${estrellasHTML(r.c)}</div>
+          </div>
+        </div>
+        <p style="margin-top:8px;font-size:14px;color:#374151">${esc(r.t)}</p>
+      </div>`).join("");
+  return `
+    <div class="contenedor">
+      <div class="detalle">
+        <div class="detalle__img">
+          <img src="${esc(p.imagen)}" alt="${esc(p.nombre)}" onerror="this.src='${IMG_FALLBACK}'" />
+        </div>
+        <div>
+          <h1>${esc(p.nombre)}</h1>
+          <div style="margin-top:8px">${estrellasHTML(prom)} <span style="color:var(--gris);font-size:14px">${prom.toFixed(1)} · ${totR} opiniones</span></div>
+          <div class="precio-grande">
+            ${desc ? `<span class="antes-grande">${money(p.precioAnterior)}</span>` : ""}${money(p.precio)}
+          </div>
+          <p style="margin-top:18px;color:#374151">${esc(p.descripcion)}</p>
+          <div style="margin-top:20px">
+            <button class="btn btn--verde" onclick="agregarCarrito('${p.slug}')">Agregar al carrito</button>
+          </div>
+          <div class="ventajas">
+            <p>🚚 Envío gratis en compras mayores a $799 MXN</p>
+            <p>💳 Paga con tarjeta de crédito o débito</p>
+            <p>🧾 Facturación CFDI disponible</p>
+          </div>
+        </div>
+      </div>
+      <div style="padding:0 0 48px">
+        <h2 style="font-size:24px;font-weight:800;margin-bottom:4px">Opiniones de clientes</h2>
+        <div style="margin-bottom:8px">${estrellasHTML(prom)} <strong>${prom.toFixed(1)}</strong> · ${totR} opiniones</div>
+        ${resenas}
+      </div>
+    </div>`;
+}
+
+function vistaCarrito() {
+  const carrito = getCarrito().map((i) => ({ ...i, p: porProducto(i.slug) })).filter((i) => i.p);
+  if (carrito.length === 0) {
+    return `<div class="contenedor" style="text-align:center;padding:80px 0">
+      <div style="font-size:56px">🛒</div>
+      <h1 style="font-size:24px;font-weight:800;margin-top:12px">Tu carrito está vacío</h1>
+      <p style="color:var(--gris);margin-top:6px">¡Llena tu carrito de magia navideña! 🎄</p>
+      <a class="btn btn--verde" style="margin-top:20px" href="#/">Seguir comprando</a>
+    </div>`;
+  }
+  const subtotal = carrito.reduce((a, i) => a + i.p.precio * i.cantidad, 0);
+  const envio = subtotal >= ENVIO_GRATIS ? 0 : ENVIO_COSTO;
+  const items = carrito.map((i) => `
+    <div class="carrito-item">
+      <img src="${esc(i.p.imagen)}" onerror="this.src='${IMG_FALLBACK}'" alt="" />
+      <div style="flex:1">
+        <strong>${esc(i.p.nombre)}</strong>
+        <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
+          <span class="cantidad">
+            <button onclick="cambiarCant('${i.slug}',-1)">−</button>
+            <span style="padding:0 8px">${i.cantidad}</span>
+            <button onclick="cambiarCant('${i.slug}',1)">+</button>
+          </span>
+          <strong>${money(i.p.precio * i.cantidad)}</strong>
+        </div>
+        <button onclick="quitarCarrito('${i.slug}')" style="border:none;background:none;color:var(--gris);font-size:13px;cursor:pointer;margin-top:6px">✕ Quitar</button>
+      </div>
+    </div>`).join("");
+  return `
+    <section class="seccion"><div class="contenedor">
+      <h1 style="font-size:28px;font-weight:800;margin-bottom:20px">Tu carrito</h1>
+      <div style="display:grid;gap:28px;grid-template-columns:1fr">
+        <div>${items}</div>
+        <div class="resumen">
+          <h2 style="font-size:18px;font-weight:800;margin-bottom:12px">Resumen</h2>
+          <div class="linea"><span>Subtotal</span><span>${money(subtotal)}</span></div>
+          <div class="linea"><span>Envío</span><span>${envio === 0 ? "Gratis" : money(envio)}</span></div>
+          <div class="linea total"><span>Total</span><span>${money(subtotal + envio)}</span></div>
+          <button class="btn btn--verde" style="width:100%;margin-top:16px" onclick="demoCheckout()">Proceder al pago</button>
+          <p class="aviso" style="margin-top:12px">🔒 Versión de demostración: no se procesan pagos reales.</p>
+        </div>
+      </div>
+    </div></section>`;
+}
+
+/* ---------- acciones carrito ---------- */
+function cambiarCant(slug, delta) {
+  const c = getCarrito();
+  const item = c.find((i) => i.slug === slug);
+  if (!item) return;
+  item.cantidad += delta;
+  const nuevo = c.filter((i) => i.cantidad > 0);
+  setCarrito(nuevo);
+  render();
+}
+function quitarCarrito(slug) {
+  setCarrito(getCarrito().filter((i) => i.slug !== slug));
+  render();
+}
+function demoCheckout() {
+  alert("🎄 ¡Gracias por tu interés!\n\nEsta es una versión de demostración, no se procesan pagos reales.");
+}
+
+/* ---------- buscar / chat ---------- */
+function buscar(e) {
+  e.preventDefault();
+  const q = document.getElementById("inputBuscar").value.trim();
+  if (q) location.hash = "#/buscar/" + encodeURIComponent(q);
+}
+function toggleChat() {
+  document.getElementById("chatCaja").classList.toggle("abierto");
+}
+
+/* ---------- router ---------- */
+function render() {
+  const h = location.hash.replace(/^#\/?/, "");
+  const [ruta, arg] = h.split("/");
+  let html;
+  if (!ruta) html = vistaInicio();
+  else if (ruta === "categoria") html = vistaCategoria(arg);
+  else if (ruta === "producto") html = vistaProducto(arg);
+  else if (ruta === "ofertas") html = vistaOfertas();
+  else if (ruta === "carrito") html = vistaCarrito();
+  else if (ruta === "buscar") html = vistaBuscar(decodeURIComponent(arg || ""));
+  else html = vistaInicio();
+  document.getElementById("app").innerHTML = html;
+  window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", render);
+
+/* ---------- inicialización ---------- */
+function init() {
+  // Nav de categorías
+  document.getElementById("navCats").innerHTML =
+    `<a class="ofertas" href="#/ofertas">🔥 Ofertas</a>` +
+    CATEGORIAS.map((c) => `<a href="#/categoria/${c.id}">${c.emoji} ${esc(c.nombre)}</a>`).join("");
+  // Footer categorías
+  document.getElementById("footerCats").innerHTML = CATEGORIAS.map(
+    (c) => `<li><a href="#/categoria/${c.id}">${esc(c.nombre)}</a></li>`,
+  ).join("");
+  // Promo marquee (duplicado para bucle continuo)
+  const anuncios = [
+    "🎄 ¡Hasta 50% de descuento en productos seleccionados!",
+    "🚚 Envío GRATIS en compras mayores a $799 MXN",
+    "🎁 Todo el catálogo con 20% de descuento",
+    "🦌 La magia de la Navidad, directo a tu puerta",
+    "💳 Paga con tarjeta a meses sin intereses",
+  ];
+  document.getElementById("promoPista").innerHTML =
+    [...anuncios, ...anuncios].map((a) => `<span>${a}</span>`).join("");
+  // Año
+  document.getElementById("anio").textContent = new Date().getFullYear();
+  // Nieve
+  const nieve = document.getElementById("nieve");
+  let copos = "";
+  for (let i = 0; i < 18; i++) {
+    const left = Math.random() * 100;
+    const dur = 6 + Math.random() * 8;
+    const delay = Math.random() * 8;
+    const size = 8 + Math.random() * 14;
+    copos += `<span class="copo" style="left:${left}%;font-size:${size}px;animation-duration:${dur}s;animation-delay:${delay}s">❄</span>`;
+  }
+  nieve.innerHTML = copos;
+
+  actualizarContador();
+  render();
+}
+init();
+
+</script>
+  </body>
+</html>
