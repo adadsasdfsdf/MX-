@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Serie de 300 Luces LED · Navidalia</title>
+<style>/* Navidalia · versión estática · tema navideño */
+:root {
+  --rojo: #c1121f;
+  --rojo-osc: #8d0801;
+  --verde: #1b5e3b;
+  --verde-claro: #2d8659;
+  --oro: #d4af37;
+  --crema: #fdf6ec;
+  --gris: #6b7280;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1a1a1a;
+  background: #fff;
+  line-height: 1.5;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+.contenedor { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+/* Barra promo (marquee) */
+.promo { background: var(--rojo); color: #fff; overflow: hidden; white-space: nowrap; }
+.promo__pista { display: inline-block; padding: 8px 0; animation: marquee 28s linear infinite; }
+.promo__pista span { margin: 0 28px; font-size: 14px; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Header */
+.header { position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,.96); backdrop-filter: blur(6px); border-bottom: 1px solid #e5e7eb; }
+.header__fila { display: flex; align-items: center; gap: 16px; padding: 14px 0; }
+.logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.logo__texto { font-size: 24px; font-weight: 900; color: var(--rojo); line-height: 1; }
+.logo__texto b { color: var(--verde); font-weight: 900; }
+.logo__sub { display: block; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--oro); margin-top: 2px; }
+.buscador { flex: 1; position: relative; }
+.buscador input { width: 100%; border: 1px solid #d1d5db; background: #f9fafb; border-radius: 999px; padding: 10px 44px 10px 18px; font-size: 14px; }
+.buscador button { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border: none; border-radius: 999px; background: var(--verde); color: #fff; cursor: pointer; }
+.carrito-btn { position: relative; display: inline-flex; align-items: center; gap: 8px; background: var(--rojo); color: #fff; border: none; border-radius: 10px; padding: 10px 16px; font-weight: 600; font-size: 14px; cursor: pointer; }
+.carrito-btn .cuenta { position: absolute; top: -8px; right: -8px; background: var(--verde); color: #fff; border-radius: 999px; min-width: 20px; height: 20px; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
+.nav-cats { border-top: 1px solid #f3f4f6; }
+.nav-cats__fila { display: flex; gap: 22px; padding: 10px 0; overflow-x: auto; justify-content: center; font-size: 14px; }
+.nav-cats a { color: #4b5563; font-weight: 500; white-space: nowrap; }
+.nav-cats a:hover { color: var(--rojo); }
+.nav-cats a.ofertas { color: var(--rojo); font-weight: 700; }
+
+/* Hero */
+.hero { background: linear-gradient(100deg, var(--rojo-osc), var(--rojo) 55%, var(--verde)); color: #fff; }
+.hero__caja { padding: 72px 0; max-width: 640px; }
+.hero__etq { display: inline-block; background: rgba(255,255,255,.15); padding: 5px 16px; border-radius: 999px; font-size: 14px; }
+.hero h1 { font-size: 48px; font-weight: 900; line-height: 1.1; margin: 16px 0; }
+.hero h1 b { color: var(--oro); }
+.hero p { font-size: 18px; color: #fde8ea; max-width: 520px; }
+.hero__btns { margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* Botones */
+.btn { display: inline-block; border-radius: 10px; padding: 12px 24px; font-weight: 600; cursor: pointer; border: none; font-size: 15px; }
+.btn--blanco { background: #fff; color: var(--rojo); }
+.btn--linea { background: transparent; border: 2px solid #fff; color: #fff; }
+.btn--verde { background: var(--verde); color: #fff; }
+.btn--verde:hover { background: var(--verde-claro); }
+
+/* Secciones */
+.seccion { padding: 48px 0; }
+.seccion__tit { text-align: center; margin-bottom: 28px; }
+.seccion__tit h2 { font-size: 30px; font-weight: 800; }
+.seccion__tit p { color: var(--gris); margin-top: 6px; }
+
+/* Categorías grid */
+.cats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (min-width: 640px) { .cats-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 900px) { .cats-grid { grid-template-columns: repeat(7, 1fr); } }
+.cat-card { display: flex; flex-direction: column; align-items: center; border: 1px solid #e5e7eb; border-radius: 16px; padding: 18px; text-align: center; transition: .2s; }
+.cat-card:hover { transform: translateY(-4px); border-color: var(--verde); box-shadow: 0 8px 20px rgba(0,0,0,.08); }
+.cat-card .emoji { font-size: 34px; }
+.cat-card span.n { margin-top: 8px; font-weight: 600; font-size: 14px; }
+
+/* Productos grid */
+.prod-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (min-width: 768px) { .prod-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1000px) { .prod-grid { grid-template-columns: repeat(5, 1fr); } }
+.prod { display: flex; flex-direction: column; border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; background: #fff; transition: .2s; }
+.prod:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.1); }
+.prod__img { position: relative; aspect-ratio: 1; background: #f3f4f6; overflow: hidden; }
+.prod__img img { width: 100%; height: 100%; object-fit: cover; transition: .3s; }
+.prod:hover .prod__img img { transform: scale(1.05); }
+.prod__etq { position: absolute; left: 8px; top: 8px; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 700; color: #fff; }
+.prod__etq--oferta { background: var(--rojo); }
+.prod__etq--desc { background: var(--verde); }
+.prod__cuerpo { padding: 14px; display: flex; flex-direction: column; flex: 1; }
+.prod__nom { font-weight: 600; font-size: 15px; }
+.prod__desc { color: var(--gris); font-size: 13px; margin-top: 4px; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.prod__precio { margin-top: 10px; }
+.prod__precio .ahora { font-size: 18px; font-weight: 800; }
+.prod__precio .antes { color: #9ca3af; text-decoration: line-through; font-size: 13px; margin-left: 6px; }
+.prod__btn { margin-top: 12px; width: 100%; }
+
+/* Detalle */
+.detalle { display: grid; gap: 32px; grid-template-columns: 1fr; padding: 40px 0; }
+@media (min-width: 768px) { .detalle { grid-template-columns: 1fr 1fr; } }
+.detalle__img { aspect-ratio: 1; border-radius: 14px; overflow: hidden; background: #f3f4f6; }
+.detalle__img img { width: 100%; height: 100%; object-fit: cover; }
+.detalle h1 { font-size: 30px; font-weight: 800; }
+.detalle .precio-grande { font-size: 30px; font-weight: 800; margin-top: 14px; }
+.detalle .antes-grande { color: #9ca3af; text-decoration: line-through; font-size: 18px; margin-right: 10px; }
+.ventajas { margin-top: 24px; background: var(--crema); border-radius: 10px; padding: 16px; font-size: 14px; }
+.ventajas p { margin: 4px 0; }
+
+/* Estrellas */
+.estrellas { position: relative; display: inline-block; font-size: 16px; line-height: 1; }
+.estrellas .base { color: #d1d5db; }
+.estrellas .fill { position: absolute; left: 0; top: 0; overflow: hidden; color: var(--oro); white-space: nowrap; }
+
+/* Reseñas */
+.resena { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; margin-top: 14px; }
+.resena__top { display: flex; justify-content: space-between; align-items: start; }
+.resena .verif { background: rgba(27,94,59,.1); color: var(--verde); border-radius: 999px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin-left: 8px; }
+
+/* Carrito */
+.carrito-item { display: flex; gap: 14px; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+.carrito-item img { width: 90px; height: 90px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
+.cantidad { display: inline-flex; align-items: center; border: 1px solid #d1d5db; border-radius: 8px; }
+.cantidad button { border: none; background: none; padding: 4px 12px; font-size: 16px; cursor: pointer; }
+.resumen { border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px; }
+.resumen .linea { display: flex; justify-content: space-between; margin: 6px 0; font-size: 14px; }
+.resumen .total { font-weight: 800; font-size: 16px; border-top: 1px solid #e5e7eb; padding-top: 10px; margin-top: 10px; }
+
+/* Footer */
+.footer { background: var(--verde); color: #fff; margin-top: 48px; }
+.footer__grid { display: grid; grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
+@media (min-width: 768px) { .footer__grid { grid-template-columns: repeat(4, 1fr); } }
+.footer h3 { font-size: 15px; margin-bottom: 10px; }
+.footer li { list-style: none; font-size: 14px; color: #d1fae5; margin: 6px 0; }
+.footer__copy { border-top: 1px solid rgba(255,255,255,.2); text-align: center; font-size: 12px; color: #d1fae5; padding: 14px; }
+
+/* Nieve */
+.nieve { position: fixed; inset: 0; pointer-events: none; z-index: 60; overflow: hidden; }
+.copo { position: absolute; top: -20px; color: #fff; opacity: .7; animation: caer linear infinite; }
+@keyframes caer { to { transform: translateY(105vh); } }
+
+/* Chat */
+.chat-btn { position: fixed; bottom: 20px; right: 20px; z-index: 50; width: 56px; height: 56px; border-radius: 999px; background: var(--rojo); color: #fff; font-size: 24px; border: none; cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,.2); }
+.chat-caja { position: fixed; bottom: 88px; right: 20px; z-index: 50; width: 340px; max-width: calc(100vw - 40px); background: #fff; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,.25); overflow: hidden; display: none; }
+.chat-caja.abierto { display: block; }
+.chat-caja__top { background: var(--verde); color: #fff; padding: 12px 16px; font-weight: 600; }
+.chat-caja__cuerpo { padding: 16px; background: var(--crema); font-size: 14px; min-height: 120px; }
+
+.aviso { background: var(--crema); border-radius: 10px; padding: 14px; font-size: 13px; color: var(--gris); margin: 16px 0; text-align: center; }
+
+#toast{display:none;position:fixed;bottom:20px;right:20px;z-index:80;background:var(--verde);color:#fff;padding:12px 18px;border-radius:10px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+</style>
+</head>
+<body>
+<div class="nieve" id="nieve" aria-hidden="true"></div>
+<div class="promo"><div class="promo__pista" id="promoPista"></div></div>
+<header class="header">
+  <div class="contenedor header__fila">
+    <a href="index.html" class="logo">
+      <span style="font-size:32px">🦌</span>
+      <span><span class="logo__texto">Navi<b>dalia</b></span><span class="logo__sub">Magia Navideña 🎄</span></span>
+    </a>
+    <form class="buscador" action="buscar.html" method="get">
+      <input name="q" type="text" placeholder="Buscar árboles, esferas, luces, regalos..."/>
+      <button type="submit" aria-label="Buscar">🔍</button>
+    </form>
+    <a class="carrito-btn" href="carrito.html">🛒 <span>Carrito</span><span class="cuenta" id="contadorCarrito" style="display:none">0</span></a>
+  </div>
+  <nav class="nav-cats"><div class="contenedor nav-cats__fila"><a class="ofertas" href="ofertas.html">🔥 Ofertas</a><a href="categoria-arboles.html">🎄 Árboles</a><a href="categoria-esferas.html">🔴 Esferas y Adornos</a><a href="categoria-luces.html">✨ Luces y Series</a><a href="categoria-decoracion.html">🏠 Decoración</a><a href="categoria-regalos.html">🎁 Regalos</a><a href="categoria-ropa.html">🧦 Ropa Navideña</a><a href="categoria-dulces.html">🍬 Dulces y Repostería</a></div></nav>
+</header>
+<main>
+  <div class="contenedor">
+    <nav style="font-size:14px;color:var(--gris);padding-top:16px"><a href="index.html">Inicio</a> / <a href="categoria-luces.html">Luces y Series</a> / Serie de 300 Luces LED</nav>
+    <div class="detalle">
+      <div class="detalle__img"><img src="https://picsum.photos/seed/navidalia-serie-300-led/800/800" onerror="this.src='https://picsum.photos/seed/navidalia-fallback/600/600'" alt="Serie de 300 Luces LED"/></div>
+      <div>
+        <h1>Serie de 300 Luces LED</h1>
+        <div style="margin-top:8px"><span class="estrellas"><span class="base">★★★★★</span><span class="fill" style="width:96%">★★★★★</span></span> <span style="color:var(--gris);font-size:14px">4.8 · 60 opiniones</span></div>
+        <div class="precio-grande"><span class="antes-grande">MX$450.00 MXN</span>MX$360.00 MXN</div>
+        <p style="margin-top:16px;color:#374151">300 luces LED multicolor, 30 metros, 8 modos de parpadeo.</p>
+        <div style="margin-top:18px"><button class="btn btn--verde" onclick="agregarCarrito('serie-300-led')">Agregar al carrito</button></div>
+        <div class="ventajas"><p>🚚 Envío gratis desde $799 MXN</p><p>💳 Paga con tarjeta de crédito o débito</p><p>🧾 Facturación CFDI disponible</p></div>
+      </div>
+    </div>
+    <div style="padding:0 0 32px"><h2 style="font-size:22px;font-weight:800;margin-bottom:4px">Opiniones de clientes</h2><div style="margin-bottom:8px"><span class="estrellas"><span class="base">★★★★★</span><span class="fill" style="width:96%">★★★★★</span></span> <strong>4.8</strong> · 60 opiniones</div><div class="resena"><strong>María G.</strong><span class="verif">✓ Compra verificada</span><div><span class="estrellas"><span class="base">★★★★★</span><span class="fill" style="width:100%">★★★★★</span></span></div><p style="margin-top:6px;font-size:14px;color:#374151">¡Quedó precioso en mi sala! Le dio un ambiente súper navideño a la casa.</p></div><div class="resena"><strong>José L.</strong><span class="verif">✓ Compra verificada</span><div><span class="estrellas"><span class="base">★★★★★</span><span class="fill" style="width:100%">★★★★★</span></span></div><p style="margin-top:6px;font-size:14px;color:#374151">Mejor de lo que esperaba por el precio. La calidad me sorprendió.</p></div><div class="resena"><strong>Fernanda S.</strong><span class="verif">✓ Compra verificada</span><div><span class="estrellas"><span class="base">★★★★★</span><span class="fill" style="width:100%">★★★★★</span></span></div><p style="margin-top:6px;font-size:14px;color:#374151">Mis hijos quedaron encantados. ¡Pura magia navideña! 🎄</p></div><div class="resena"><strong>Carlos H.</strong><span class="verif">✓ Compra verificada</span><div><span class="estrellas"><span class="base">★★★★★</span><span class="fill" style="width:80%">★★★★★</span></span></div><p style="margin-top:6px;font-size:14px;color:#374151">Llegó rápido y bien empacado. Muy recomendable.</p></div><div class="resena"><strong>Ana P.</strong><span class="verif">✓ Compra verificada</span><div><span class="estrellas"><span class="base">★★★★★</span><span class="fill" style="width:100%">★★★★★</span></span></div><p style="margin-top:6px;font-size:14px;color:#374151">Ideal para el intercambio navideño. 🎁</p></div></div>
+    <section class="seccion" style="border-top:1px solid #f3f4f6"><div class="seccion__tit"><h2 style="font-size:22px">También te puede gustar</h2></div><div class="prod-grid">
+    <div class="prod">
+      <a class="prod__img" href="producto-serie-luces-100-led.html">
+        <span class="prod__etq prod__etq--oferta">🔥 OFERTA -50%</span>
+        <img src="https://picsum.photos/seed/navidalia-serie-luces-100-led/800/800" alt="Serie de 100 Luces LED Cálidas" loading="lazy" onerror="this.src='https://picsum.photos/seed/navidalia-fallback/600/600'"/>
+      </a>
+      <div class="prod__cuerpo">
+        <a href="producto-serie-luces-100-led.html"><div class="prod__nom">Serie de 100 Luces LED Cálidas</div></a>
+        <div class="prod__desc">Serie de 100 luces LED color cálido, 10 metros. Ideal para el árbol. ¡Oferta!</div>
+        <div class="prod__precio">
+          <span class="ahora">MX$90.00 MXN</span>
+          <span class="antes">MX$180.00 MXN</span>
+        </div>
+        <button class="btn btn--verde prod__btn" onclick="agregarCarrito('serie-luces-100-led')">Agregar al carrito</button>
+      </div>
+    </div>
+    <div class="prod">
+      <a class="prod__img" href="producto-cortina-luces-led.html">
+        <span class="prod__etq prod__etq--desc">-20%</span>
+        <img src="https://picsum.photos/seed/navidalia-cortina-luces-led/800/800" alt="Cortina de Luces LED 3x3m" loading="lazy" onerror="this.src='https://picsum.photos/seed/navidalia-fallback/600/600'"/>
+      </a>
+      <div class="prod__cuerpo">
+        <a href="producto-cortina-luces-led.html"><div class="prod__nom">Cortina de Luces LED 3x3m</div></a>
+        <div class="prod__desc">Cortina de luces de 3x3 metros, ideal para ventanas.</div>
+        <div class="prod__precio">
+          <span class="ahora">MX$440.00 MXN</span>
+          <span class="antes">MX$550.00 MXN</span>
+        </div>
+        <button class="btn btn--verde prod__btn" onclick="agregarCarrito('cortina-luces-led')">Agregar al carrito</button>
+      </div>
+    </div>
+    <div class="prod">
+      <a class="prod__img" href="producto-luces-exterior-impermeable.html">
+        <span class="prod__etq prod__etq--desc">-20%</span>
+        <img src="https://picsum.photos/seed/navidalia-luces-exterior-impermeable/800/800" alt="Luces de Exterior Impermeables" loading="lazy" onerror="this.src='https://picsum.photos/seed/navidalia-fallback/600/600'"/>
+      </a>
+      <div class="prod__cuerpo">
+        <a href="producto-luces-exterior-impermeable.html"><div class="prod__nom">Luces de Exterior Impermeables</div></a>
+        <div class="prod__desc">Serie de 200 luces LED resistentes al agua para exteriores.</div>
+        <div class="prod__precio">
+          <span class="ahora">MX$384.00 MXN</span>
+          <span class="antes">MX$480.00 MXN</span>
+        </div>
+        <button class="btn btn--verde prod__btn" onclick="agregarCarrito('luces-exterior-impermeable')">Agregar al carrito</button>
+      </div>
+    </div>
+    <div class="prod">
+      <a class="prod__img" href="producto-proyector-laser-navidad.html">
+        <span class="prod__etq prod__etq--desc">-20%</span>
+        <img src="https://picsum.photos/seed/navidalia-proyector-laser-navidad/800/800" alt="Proyector Láser Navideño" loading="lazy" onerror="this.src='https://picsum.photos/seed/navidalia-fallback/600/600'"/>
+      </a>
+      <div class="prod__cuerpo">
+        <a href="producto-proyector-laser-navidad.html"><div class="prod__nom">Proyector Láser Navideño</div></a>
+        <div class="prod__desc">Proyector de figuras navideñas para fachada, control remoto.</div>
+        <div class="prod__precio">
+          <span class="ahora">MX$712.00 MXN</span>
+          <span class="antes">MX$890.00 MXN</span>
+        </div>
+        <button class="btn btn--verde prod__btn" onclick="agregarCarrito('proyector-laser-navidad')">Agregar al carrito</button>
+      </div>
+    </div>
+    <div class="prod">
+      <a class="prod__img" href="producto-velas-led-set6.html">
+        <span class="prod__etq prod__etq--desc">-20%</span>
+        <img src="https://picsum.photos/seed/navidalia-velas-led-set6/800/800" alt="Velas LED sin Flama (6 pzas)" loading="lazy" onerror="this.src='https://picsum.photos/seed/navidalia-fallback/600/600'"/>
+      </a>
+      <div class="prod__cuerpo">
+        <a href="producto-velas-led-set6.html"><div class="prod__nom">Velas LED sin Flama (6 pzas)</div></a>
+        <div class="prod__desc">6 velas LED con parpadeo realista, a pilas, seguras.</div>
+        <div class="prod__precio">
+          <span class="ahora">MX$176.00 MXN</span>
+          <span class="antes">MX$220.00 MXN</span>
+        </div>
+        <button class="btn btn--verde prod__btn" onclick="agregarCarrito('velas-led-set6')">Agregar al carrito</button>
+      </div>
+    </div></div></section>
+  </div></main>
+<footer class="footer">
+  <div class="contenedor footer__grid">
+    <div><div class="logo"><span style="font-size:28px">🦌</span><span class="logo__texto" style="color:#fff">Navi<b style="color:var(--oro)">dalia</b></span></div><p style="margin-top:10px;font-size:14px;color:#d1fae5">La magia de la Navidad, a tu puerta. 🎄</p></div>
+    <div><h3>Categorías</h3><ul><li><a href="categoria-arboles.html">Árboles</a></li><li><a href="categoria-esferas.html">Esferas y Adornos</a></li><li><a href="categoria-luces.html">Luces y Series</a></li><li><a href="categoria-decoracion.html">Decoración</a></li><li><a href="categoria-regalos.html">Regalos</a></li><li><a href="categoria-ropa.html">Ropa Navideña</a></li><li><a href="categoria-dulces.html">Dulces y Repostería</a></li></ul></div>
+    <div><h3>Ayuda</h3><ul><li>Envíos y entregas</li><li>Devoluciones</li><li>Facturación (CFDI)</li><li>Contáctanos</li></ul></div>
+    <div><h3>Métodos de pago</h3><ul><li>💳 Tarjeta de crédito</li><li>💳 Tarjeta de débito</li><li>🎁 Meses sin intereses</li></ul></div>
+  </div>
+  <div class="footer__copy">© <span id="anio"></span> Navidalia · Hecho con 💚 en México · Versión de demostración</div>
+</footer>
+<button class="chat-btn" onclick="alert('¡Hola y felices fiestas! 🎄\nTienda de demostración. Escríbenos a hola@navidalia.mx')">🎅</button>
+<div id="toast">✓ Agregado al carrito</div>
+<script>
+var CART_KEY="navidalia-mp-carrito";
+function money(n){return "MX$"+new Intl.NumberFormat("es-MX",{minimumFractionDigits:2,maximumFractionDigits:2}).format(n)+" MXN";}
+function getCarrito(){try{return JSON.parse(localStorage.getItem(CART_KEY))||[];}catch(e){return [];}}
+function setCarrito(c){localStorage.setItem(CART_KEY,JSON.stringify(c));contador();}
+function agregarCarrito(slug,cant){cant=cant||1;var c=getCarrito();var it=c.find(function(i){return i.slug===slug;});if(it)it.cantidad+=cant;else c.push({slug:slug,cantidad:cant});setCarrito(c);var t=document.getElementById("toast");if(t){t.style.display="block";clearTimeout(window.__tt);window.__tt=setTimeout(function(){t.style.display="none";},1800);}}
+function contador(){var n=getCarrito().reduce(function(a,i){return a+i.cantidad;},0);var el=document.getElementById("contadorCarrito");if(el){el.textContent=n;el.style.display=n>0?"flex":"none";}}
+document.addEventListener("DOMContentLoaded",contador);
+
+document.addEventListener("DOMContentLoaded",function(){
+  var pp=document.getElementById("promoPista");
+  if(pp){var an=["🎄 ¡Hasta 50% de descuento en productos seleccionados!","🚚 Envío GRATIS en compras mayores a $799 MXN","🎁 Todo el catálogo con 20% de descuento","🦌 La magia de la Navidad, directo a tu puerta","💳 Paga con tarjeta a meses sin intereses"];pp.innerHTML=an.concat(an).map(function(a){return "<span>"+a+"</span>";}).join("");}
+  var ni=document.getElementById("nieve");
+  if(ni){var c="";for(var i=0;i<16;i++){c+='<span class="copo" style="left:'+(Math.random()*100)+'%;font-size:'+(8+Math.random()*14)+'px;animation-duration:'+(6+Math.random()*8)+'s;animation-delay:'+(Math.random()*8)+'s">❄</span>';}ni.innerHTML=c;}
+  var y=document.getElementById("anio");if(y)y.textContent=new Date().getFullYear();
+});
+</script>
+</body>
+</html>
