@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" width="1600" height="600" role="img" aria-label="Slide 3 Navidalia gran apertura">
+  <defs>
+    <linearGradient id="s3sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#780000"/>
+      <stop offset="0.55" stop-color="#B01020"/>
+      <stop offset="1" stop-color="#C1121F"/>
+    </linearGradient>
+    <radialGradient id="s3glow" cx="0.5" cy="0.25" r="0.7">
+      <stop offset="0" stop-color="#F6E39B" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#F6E39B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="s3snow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F2E4D4"/>
+    </linearGradient>
+    <linearGradient id="s3gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6E39B"/>
+      <stop offset="1" stop-color="#C8992B"/>
+    </linearGradient>
+    <radialGradient id="s3starGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF6D6" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FFF6D6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="s3overlay" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4A0008" stop-opacity="0.74"/>
+      <stop offset="0.5" stop-color="#4A0008" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#4A0008" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="600" fill="url(#s3sky)"/>
+  <rect width="1600" height="600" fill="url(#s3glow)"/>
+
+  <path d="M0 480 C260 430, 540 490, 840 460 C1120 434, 1360 490, 1600 460 L1600 600 L0 600 Z" fill="#E8D7C4" opacity="0.5"/>
+  <path d="M0 510 C300 470, 650 525, 1000 508 C1300 492, 1450 525, 1600 508 L1600 600 L0 600 Z" fill="url(#s3snow)"/>
+
+  <!-- celebratory confetti / falling stars (dominant) -->
+  <g>
+    <g transform="translate(260,120)"><polygon points="0,-16 5,-5 17,-5 7,2 11,14 0,6 -11,14 -7,2 -17,-5 -5,-5" fill="url(#s3gold)" opacity="0.9"/></g>
+    <g transform="translate(520,80)"><polygon points="0,-12 4,-4 13,-4 5,2 8,11 0,5 -8,11 -5,2 -13,-4 -4,-4" fill="#FDF6EC" opacity="0.85"/></g>
+    <g transform="translate(760,110)"><polygon points="0,-18 6,-6 19,-6 8,2 12,15 0,7 -12,15 -8,2 -19,-6 -6,-6" fill="url(#s3gold)" opacity="0.95"/></g>
+    <g transform="translate(1010,70)"><polygon points="0,-12 4,-4 13,-4 5,2 8,11 0,5 -8,11 -5,2 -13,-4 -4,-4" fill="#FDF6EC" opacity="0.85"/></g>
+    <g transform="translate(1250,120)"><polygon points="0,-16 5,-5 17,-5 7,2 11,14 0,6 -11,14 -7,2 -17,-5 -5,-5" fill="url(#s3gold)" opacity="0.9"/></g>
+  </g>
+  <g fill="#D4AF37" opacity="0.85">
+    <rect x="380" y="180" width="8" height="8" transform="rotate(20 384 184)"/>
+    <rect x="640" y="210" width="8" height="8" transform="rotate(45 644 214)"/>
+    <rect x="900" y="190" width="8" height="8" transform="rotate(10 904 194)"/>
+    <rect x="1150" y="220" width="8" height="8" transform="rotate(35 1154 224)"/>
+  </g>
+  <g fill="#FDF6EC" opacity="0.8">
+    <circle cx="440" cy="150" r="4"/>
+    <circle cx="700" cy="170" r="4"/>
+    <circle cx="980" cy="150" r="4"/>
+    <circle cx="1200" cy="180" r="4"/>
+  </g>
+
+  <!-- Two festive gift piles flanking center -->
+  <g transform="translate(1120,420)">
+    <rect x="0" y="40" width="130" height="120" rx="8" fill="#C1121F"/>
+    <rect x="56" y="40" width="18" height="120" fill="url(#s3gold)"/>
+    <rect x="0" y="88" width="130" height="18" fill="url(#s3gold)"/>
+    <path d="M65 40 C45 10, 12 22, 65 44 C118 22, 85 10, 65 40 Z" fill="url(#s3gold)"/>
+    <rect x="130" y="90" width="90" height="70" rx="6" fill="#2E7D32"/>
+    <rect x="166" y="90" width="14" height="70" fill="#FDF6EC"/>
+    <rect x="130" y="118" width="90" height="14" fill="#FDF6EC"/>
+  </g>
+
+  <!-- Golden decorated tree center-right -->
+  <g transform="translate(1240,170)">
+    <circle cx="80" cy="-6" r="76" fill="url(#s3starGlow)"/>
+    <polygon points="80,-10 150,120 10,120" fill="#2E7D32"/>
+    <polygon points="80,70 185,240 -25,240" fill="#1F5E26"/>
+    <polygon points="80,170 215,350 -55,350" fill="#1F5E26"/>
+    <rect x="64" y="350" width="32" height="30" rx="4" fill="#7A4A1E"/>
+    <polygon points="80,-56 92,-22 128,-22 98,-2 110,34 80,12 50,34 62,-2 32,-22 68,-22" fill="url(#s3gold)" stroke="#B8891F" stroke-width="1"/>
+    <g fill="#D4AF37">
+      <circle cx="60" cy="60" r="7"/>
+      <circle cx="100" cy="100" r="7"/>
+      <circle cx="40" cy="150" r="7"/>
+      <circle cx="120" cy="190" r="7"/>
+      <circle cx="30" cy="290" r="8"/>
+      <circle cx="130" cy="290" r="8"/>
+      <circle cx="80" cy="250" r="8"/>
+    </g>
+    <g fill="#FDF6EC">
+      <circle cx="80" cy="150" r="7"/>
+      <circle cx="60" cy="320" r="7"/>
+      <circle cx="105" cy="330" r="7"/>
+    </g>
+    <g fill="#FFF4CC">
+      <circle cx="90" cy="40" r="3"/><circle cx="55" cy="110" r="3"/>
+      <circle cx="110" cy="140" r="3"/><circle cx="50" cy="240" r="3"/>
+      <circle cx="110" cy="260" r="3"/>
+    </g>
+  </g>
+
+  <!-- Cute reindeer (left) with gold scarf -->
+  <g transform="translate(230,255)">
+    <ellipse cx="110" cy="200" rx="105" ry="78" fill="#B9793E"/>
+    <ellipse cx="110" cy="222" rx="78" ry="48" fill="#C98A4E"/>
+    <rect x="48" y="252" width="22" height="56" rx="10" fill="#9E6531"/>
+    <rect x="88" y="262" width="22" height="52" rx="10" fill="#9E6531"/>
+    <rect x="128" y="262" width="22" height="52" rx="10" fill="#8A5A2B"/>
+    <rect x="166" y="252" width="22" height="56" rx="10" fill="#8A5A2B"/>
+    <ellipse cx="59" cy="308" rx="13" ry="6" fill="#5B3A1C"/>
+    <ellipse cx="99" cy="314" rx="13" ry="6" fill="#5B3A1C"/>
+    <ellipse cx="139" cy="314" rx="13" ry="6" fill="#5B3A1C"/>
+    <ellipse cx="177" cy="308" rx="13" ry="6" fill="#5B3A1C"/>
+    <ellipse cx="80" cy="90" rx="62" ry="56" fill="#B9793E"/>
+    <ellipse cx="30" cy="70" rx="20" ry="12" fill="#9E6531" transform="rotate(-28 30 70)"/>
+    <ellipse cx="130" cy="70" rx="20" ry="12" fill="#9E6531" transform="rotate(28 130 70)"/>
+    <g fill="none" stroke="#8A5A2B" stroke-width="9" stroke-linecap="round">
+      <path d="M52 44 C40 10, 18 10, 6 -16"/>
+      <path d="M28 16 C10 8, 0 14, -10 2"/>
+      <path d="M34 2 C26 -22, 8 -22, -2 -30"/>
+      <path d="M108 44 C120 10, 142 10, 154 -16"/>
+      <path d="M132 16 C150 8, 160 14, 170 2"/>
+      <path d="M126 2 C134 -22, 152 -22, 162 -30"/>
+    </g>
+    <path d="M28 128 Q80 150 134 128 L140 150 Q80 176 22 150 Z" fill="url(#s3gold)"/>
+    <rect x="24" y="146" width="26" height="46" rx="6" fill="url(#s3gold)"/>
+    <ellipse cx="80" cy="110" rx="38" ry="30" fill="#F3DDBE"/>
+    <circle cx="58" cy="86" r="9" fill="#2A1A0F"/>
+    <circle cx="102" cy="86" r="9" fill="#2A1A0F"/>
+    <circle cx="61" cy="82.5" r="3" fill="#fff"/>
+    <circle cx="105" cy="82.5" r="3" fill="#fff"/>
+    <circle cx="46" cy="104" r="8" fill="#F2A6AD" opacity="0.7"/>
+    <circle cx="114" cy="104" r="8" fill="#F2A6AD" opacity="0.7"/>
+    <circle cx="80" cy="112" r="15" fill="#C1121F"/>
+    <circle cx="74" cy="106" r="5" fill="#F2919A"/>
+    <path d="M66 128 Q80 142 94 128" fill="none" stroke="#8A5A2B" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- left dark overlay band -->
+  <rect width="900" height="600" fill="url(#s3overlay)"/>
+</svg>

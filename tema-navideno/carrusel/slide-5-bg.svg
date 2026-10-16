@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" width="1600" height="600" role="img" aria-label="Slide 5 Navidalia compra con confianza noche">
+  <defs>
+    <linearGradient id="s5sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4A0008"/>
+      <stop offset="0.5" stop-color="#780000"/>
+      <stop offset="1" stop-color="#9E0E18"/>
+    </linearGradient>
+    <radialGradient id="s5moon" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF6D6" stop-opacity="0.95"/>
+      <stop offset="0.6" stop-color="#FFF0C0" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#FFF0C0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="s5snow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F0E6F2"/>
+      <stop offset="1" stop-color="#D8C7D0"/>
+    </linearGradient>
+    <linearGradient id="s5tree" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E7D32"/>
+      <stop offset="1" stop-color="#143E18"/>
+    </linearGradient>
+    <linearGradient id="s5gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6E39B"/>
+      <stop offset="1" stop-color="#C8992B"/>
+    </linearGradient>
+    <radialGradient id="s5bokeh" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF4CC" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#FFF4CC" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="s5bokehR" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#F2A6AD" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#F2A6AD" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="s5bokehG" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#9BE3A5" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#9BE3A5" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="s5overlay" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2E0004" stop-opacity="0.78"/>
+      <stop offset="0.5" stop-color="#2E0004" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#2E0004" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="600" fill="url(#s5sky)"/>
+
+  <!-- moon glow upper right -->
+  <circle cx="1300" cy="130" r="260" fill="url(#s5moon)"/>
+  <circle cx="1300" cy="130" r="70" fill="#FFF6E0" opacity="0.9"/>
+
+  <!-- stars scattered (night) -->
+  <g fill="#FFF6D6">
+    <circle cx="200" cy="90" r="2.5" opacity="0.9"/>
+    <circle cx="340" cy="150" r="2" opacity="0.7"/>
+    <circle cx="480" cy="70" r="3" opacity="0.95"/>
+    <circle cx="600" cy="130" r="2" opacity="0.7"/>
+    <circle cx="720" cy="80" r="2.5" opacity="0.85"/>
+    <circle cx="880" cy="140" r="2" opacity="0.7"/>
+    <circle cx="1000" cy="70" r="3" opacity="0.95"/>
+    <circle cx="1120" cy="120" r="2" opacity="0.7"/>
+    <circle cx="560" cy="200" r="2" opacity="0.65"/>
+    <circle cx="760" cy="220" r="2.5" opacity="0.8"/>
+    <circle cx="960" cy="200" r="2" opacity="0.65"/>
+  </g>
+  <!-- twinkle stars (4-point) -->
+  <g stroke="#FFF6D6" stroke-width="1.6" stroke-linecap="round" opacity="0.9">
+    <g transform="translate(420,110)"><line x1="-7" y1="0" x2="7" y2="0"/><line x1="0" y1="-7" x2="0" y2="7"/></g>
+    <g transform="translate(820,100)"><line x1="-6" y1="0" x2="6" y2="0"/><line x1="0" y1="-6" x2="0" y2="6"/></g>
+    <g transform="translate(1060,160)"><line x1="-7" y1="0" x2="7" y2="0"/><line x1="0" y1="-7" x2="0" y2="7"/></g>
+  </g>
+
+  <!-- bokeh light orbs (dominant feature) -->
+  <g>
+    <circle cx="150" cy="330" r="60" fill="url(#s5bokeh)"/>
+    <circle cx="420" cy="420" r="48" fill="url(#s5bokehR)"/>
+    <circle cx="650" cy="300" r="70" fill="url(#s5bokeh)"/>
+    <circle cx="900" cy="400" r="54" fill="url(#s5bokehG)"/>
+    <circle cx="1150" cy="320" r="64" fill="url(#s5bokeh)"/>
+    <circle cx="1400" cy="420" r="50" fill="url(#s5bokehR)"/>
+    <circle cx="300" cy="470" r="40" fill="url(#s5bokehG)"/>
+    <circle cx="1250" cy="470" r="44" fill="url(#s5bokeh)"/>
+  </g>
+
+  <path d="M0 480 C260 440, 540 500, 840 470 C1120 444, 1360 500, 1600 470 L1600 600 L0 600 Z" fill="#C9B8C8" opacity="0.45"/>
+  <path d="M0 515 C300 478, 650 528, 1000 512 C1300 496, 1450 528, 1600 512 L1600 600 L0 600 Z" fill="url(#s5snow)"/>
+
+  <!-- Cozy lit tree center-right -->
+  <g transform="translate(1150,180)">
+    <polygon points="80,-10 150,120 10,120" fill="url(#s5tree)"/>
+    <polygon points="80,70 185,240 -25,240" fill="url(#s5tree)"/>
+    <polygon points="80,170 215,350 -55,350" fill="url(#s5tree)"/>
+    <rect x="64" y="350" width="32" height="30" rx="4" fill="#5B3A1C"/>
+    <polygon points="80,-54 90,-22 124,-22 96,-2 106,32 80,12 54,32 64,-2 36,-22 70,-22" fill="url(#s5gold)" stroke="#B8891F" stroke-width="1"/>
+    <!-- warm glowing lights -->
+    <g>
+      <circle cx="60" cy="60" r="5" fill="#FFF4CC"/>
+      <circle cx="100" cy="100" r="5" fill="#FFD88A"/>
+      <circle cx="40" cy="150" r="5" fill="#FFF4CC"/>
+      <circle cx="120" cy="190" r="5" fill="#FFD88A"/>
+      <circle cx="80" cy="150" r="5" fill="#FFF4CC"/>
+      <circle cx="30" cy="300" r="6" fill="#FFD88A"/>
+      <circle cx="130" cy="300" r="6" fill="#FFF4CC"/>
+      <circle cx="80" cy="260" r="6" fill="#FFD88A"/>
+      <circle cx="60" cy="330" r="6" fill="#FFF4CC"/>
+      <circle cx="105" cy="335" r="6" fill="#FFD88A"/>
+    </g>
+    <g opacity="0.6">
+      <circle cx="60" cy="60" r="14" fill="url(#s5bokeh)"/>
+      <circle cx="120" cy="190" r="14" fill="url(#s5bokeh)"/>
+      <circle cx="30" cy="300" r="16" fill="url(#s5bokeh)"/>
+      <circle cx="130" cy="300" r="16" fill="url(#s5bokeh)"/>
+    </g>
+  </g>
+
+  <!-- Gift boxes -->
+  <g transform="translate(1120,490)">
+    <rect x="0" y="0" width="76" height="64" rx="5" fill="#C1121F"/>
+    <rect x="32" y="0" width="12" height="64" fill="url(#s5gold)"/>
+    <rect x="0" y="24" width="76" height="12" fill="url(#s5gold)"/>
+  </g>
+  <g transform="translate(1220,505)">
+    <rect x="0" y="0" width="60" height="50" rx="5" fill="#2E7D32"/>
+    <rect x="25" y="0" width="10" height="50" fill="#FDF6EC"/>
+    <rect x="0" y="20" width="60" height="10" fill="#FDF6EC"/>
+  </g>
+
+  <!-- Cute reindeer (left) warm cheeks, cozy -->
+  <g transform="translate(240,260)">
+    <ellipse cx="110" cy="200" rx="105" ry="78" fill="#A86A34"/>
+    <ellipse cx="110" cy="222" rx="78" ry="48" fill="#BC7D44"/>
+    <rect x="48" y="252" width="22" height="56" rx="10" fill="#8A5A2B"/>
+    <rect x="88" y="262" width="22" height="52" rx="10" fill="#8A5A2B"/>
+    <rect x="128" y="262" width="22" height="52" rx="10" fill="#7A4A22"/>
+    <rect x="166" y="252" width="22" height="56" rx="10" fill="#7A4A22"/>
+    <ellipse cx="59" cy="308" rx="13" ry="6" fill="#4A2E14"/>
+    <ellipse cx="99" cy="314" rx="13" ry="6" fill="#4A2E14"/>
+    <ellipse cx="139" cy="314" rx="13" ry="6" fill="#4A2E14"/>
+    <ellipse cx="177" cy="308" rx="13" ry="6" fill="#4A2E14"/>
+    <ellipse cx="80" cy="90" rx="62" ry="56" fill="#A86A34"/>
+    <ellipse cx="30" cy="70" rx="20" ry="12" fill="#8A5A2B" transform="rotate(-28 30 70)"/>
+    <ellipse cx="130" cy="70" rx="20" ry="12" fill="#8A5A2B" transform="rotate(28 130 70)"/>
+    <g fill="none" stroke="#7A4A22" stroke-width="9" stroke-linecap="round">
+      <path d="M52 44 C40 10, 18 10, 6 -16"/>
+      <path d="M28 16 C10 8, 0 14, -10 2"/>
+      <path d="M34 2 C26 -22, 8 -22, -2 -30"/>
+      <path d="M108 44 C120 10, 142 10, 154 -16"/>
+      <path d="M132 16 C150 8, 160 14, 170 2"/>
+      <path d="M126 2 C134 -22, 152 -22, 162 -30"/>
+    </g>
+    <path d="M28 128 Q80 150 134 128 L140 150 Q80 176 22 150 Z" fill="#C1121F"/>
+    <rect x="24" y="146" width="26" height="46" rx="6" fill="#C1121F"/>
+    <rect x="24" y="156" width="26" height="6" fill="#9E0E18"/>
+    <rect x="24" y="172" width="26" height="6" fill="#9E0E18"/>
+    <ellipse cx="80" cy="110" rx="38" ry="30" fill="#EFD6B6"/>
+    <circle cx="58" cy="86" r="9" fill="#2A1A0F"/>
+    <circle cx="102" cy="86" r="9" fill="#2A1A0F"/>
+    <circle cx="61" cy="82.5" r="3" fill="#fff"/>
+    <circle cx="105" cy="82.5" r="3" fill="#fff"/>
+    <circle cx="46" cy="104" r="8" fill="#F2A6AD" opacity="0.75"/>
+    <circle cx="114" cy="104" r="8" fill="#F2A6AD" opacity="0.75"/>
+    <circle cx="80" cy="112" r="15" fill="#C1121F"/>
+    <circle cx="74" cy="106" r="5" fill="#F2919A"/>
+    <path d="M66 128 Q80 142 94 128" fill="none" stroke="#7A4A22" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- gentle falling snow -->
+  <g fill="#FFFFFF">
+    <circle cx="260" cy="200" r="3" opacity="0.8"/>
+    <circle cx="520" cy="250" r="3" opacity="0.7"/>
+    <circle cx="700" cy="360" r="3" opacity="0.75"/>
+    <circle cx="860" cy="300" r="3" opacity="0.7"/>
+    <circle cx="420" cy="360" r="3" opacity="0.7"/>
+  </g>
+
+  <!-- left dark overlay band -->
+  <rect width="900" height="600" fill="url(#s5overlay)"/>
+</svg>

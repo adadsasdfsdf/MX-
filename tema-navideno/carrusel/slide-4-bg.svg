@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" width="1600" height="600" role="img" aria-label="Slide 4 Navidalia categorias arboles">
+  <defs>
+    <linearGradient id="s4sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7E0A14"/>
+      <stop offset="0.55" stop-color="#C1121F"/>
+      <stop offset="1" stop-color="#9E0E18"/>
+    </linearGradient>
+    <radialGradient id="s4glow" cx="0.5" cy="0.4" r="0.6">
+      <stop offset="0" stop-color="#F7D9A0" stop-opacity="0.33"/>
+      <stop offset="1" stop-color="#F7D9A0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="s4snow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F2E4D4"/>
+    </linearGradient>
+    <linearGradient id="s4tree" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3C9D45"/>
+      <stop offset="1" stop-color="#1F5E26"/>
+    </linearGradient>
+    <linearGradient id="s4treeDk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E7D32"/>
+      <stop offset="1" stop-color="#174A1C"/>
+    </linearGradient>
+    <linearGradient id="s4gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6E39B"/>
+      <stop offset="1" stop-color="#C8992B"/>
+    </linearGradient>
+    <radialGradient id="s4starGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF6D6" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#FFF6D6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="s4overlay" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5E0810" stop-opacity="0.72"/>
+      <stop offset="0.5" stop-color="#5E0810" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#5E0810" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="600" fill="url(#s4sky)"/>
+  <rect width="1600" height="600" fill="url(#s4glow)"/>
+  <circle cx="800" cy="110" r="200" fill="url(#s4starGlow)"/>
+
+  <path d="M0 470 C260 410, 520 470, 820 440 C1100 412, 1360 470, 1600 440 L1600 600 L0 600 Z" fill="#E8D7C4" opacity="0.55"/>
+  <path d="M0 505 C300 460, 650 520, 1000 500 C1300 484, 1450 520, 1600 500 L1600 600 L0 600 Z" fill="url(#s4snow)"/>
+
+  <!-- A forest of trees (tree-focused slide) -->
+  <!-- far small trees -->
+  <g transform="translate(700,300)" opacity="0.85">
+    <polygon points="40,0 80,80 0,80" fill="#174A1C"/>
+    <polygon points="40,45 95,150 -15,150" fill="#174A1C"/>
+    <rect x="32" y="150" width="16" height="18" fill="#5B3A1C"/>
+  </g>
+  <g transform="translate(560,320)" opacity="0.8">
+    <polygon points="34,0 68,70 0,70" fill="#143E18"/>
+    <polygon points="34,38 82,130 -14,130" fill="#143E18"/>
+    <rect x="26" y="130" width="16" height="16" fill="#5B3A1C"/>
+  </g>
+
+  <!-- Main decorated tree (center-right) -->
+  <g transform="translate(1130,130)">
+    <circle cx="90" cy="-6" r="80" fill="url(#s4starGlow)"/>
+    <polygon points="90,-14 170,130 10,130" fill="url(#s4tree)"/>
+    <polygon points="90,78 210,270 -30,270" fill="url(#s4tree)"/>
+    <polygon points="90,190 240,400 -60,400" fill="url(#s4tree)"/>
+    <path d="M22 128 Q90 104 158 128 Q124 140 90 134 Q56 140 22 128 Z" fill="#FFFFFF" opacity="0.85"/>
+    <path d="M-24 268 Q90 240 204 268 Q138 282 90 276 Q42 282 -24 268 Z" fill="#FFFFFF" opacity="0.8"/>
+    <rect x="72" y="400" width="36" height="34" rx="4" fill="#7A4A1E"/>
+    <polygon points="90,-60 101,-24 139,-24 108,-2 119,34 90,12 61,34 72,-2 41,-24 79,-24" fill="url(#s4gold)" stroke="#B8891F" stroke-width="1"/>
+    <circle cx="66" cy="70" r="8" fill="#F23B4A"/>
+    <circle cx="112" cy="110" r="8" fill="#D4AF37"/>
+    <circle cx="46" cy="170" r="8" fill="#D4AF37"/>
+    <circle cx="134" cy="210" r="8" fill="#F23B4A"/>
+    <circle cx="90" cy="170" r="8" fill="#FDF6EC"/>
+    <circle cx="36" cy="330" r="9" fill="#F23B4A"/>
+    <circle cx="146" cy="330" r="9" fill="#D4AF37"/>
+    <circle cx="90" cy="290" r="9" fill="#FDF6EC"/>
+    <circle cx="66" cy="365" r="9" fill="#D4AF37"/>
+    <circle cx="118" cy="375" r="9" fill="#F23B4A"/>
+  </g>
+
+  <!-- Secondary medium tree (right edge) -->
+  <g transform="translate(1420,250)">
+    <polygon points="60,-10 115,90 5,90" fill="url(#s4treeDk)"/>
+    <polygon points="60,55 140,185 -20,185" fill="url(#s4treeDk)"/>
+    <rect x="48" y="185" width="24" height="26" rx="3" fill="#7A4A1E"/>
+    <polygon points="60,-42 68,-20 92,-20 72,-6 80,18 60,6 40,18 48,-6 28,-20 52,-20" fill="url(#s4gold)"/>
+    <circle cx="45" cy="55" r="6" fill="#F23B4A"/>
+    <circle cx="80" cy="115" r="6" fill="#D4AF37"/>
+    <circle cx="45" cy="150" r="6" fill="#FDF6EC"/>
+  </g>
+
+  <!-- Gift boxes at base of main tree -->
+  <g transform="translate(1120,480)">
+    <rect x="0" y="0" width="80" height="70" rx="5" fill="#C1121F"/>
+    <rect x="34" y="0" width="12" height="70" fill="#D4AF37"/>
+    <rect x="0" y="26" width="80" height="12" fill="#D4AF37"/>
+  </g>
+
+  <!-- Cute reindeer (left) -->
+  <g transform="translate(230,255)">
+    <ellipse cx="110" cy="200" rx="105" ry="78" fill="#B9793E"/>
+    <ellipse cx="110" cy="222" rx="78" ry="48" fill="#C98A4E"/>
+    <rect x="48" y="252" width="22" height="56" rx="10" fill="#9E6531"/>
+    <rect x="88" y="262" width="22" height="52" rx="10" fill="#9E6531"/>
+    <rect x="128" y="262" width="22" height="52" rx="10" fill="#8A5A2B"/>
+    <rect x="166" y="252" width="22" height="56" rx="10" fill="#8A5A2B"/>
+    <ellipse cx="59" cy="308" rx="13" ry="6" fill="#5B3A1C"/>
+    <ellipse cx="99" cy="314" rx="13" ry="6" fill="#5B3A1C"/>
+    <ellipse cx="139" cy="314" rx="13" ry="6" fill="#5B3A1C"/>
+    <ellipse cx="177" cy="308" rx="13" ry="6" fill="#5B3A1C"/>
+    <ellipse cx="80" cy="90" rx="62" ry="56" fill="#B9793E"/>
+    <ellipse cx="30" cy="70" rx="20" ry="12" fill="#9E6531" transform="rotate(-28 30 70)"/>
+    <ellipse cx="130" cy="70" rx="20" ry="12" fill="#9E6531" transform="rotate(28 130 70)"/>
+    <g fill="none" stroke="#8A5A2B" stroke-width="9" stroke-linecap="round">
+      <path d="M52 44 C40 10, 18 10, 6 -16"/>
+      <path d="M28 16 C10 8, 0 14, -10 2"/>
+      <path d="M34 2 C26 -22, 8 -22, -2 -30"/>
+      <path d="M108 44 C120 10, 142 10, 154 -16"/>
+      <path d="M132 16 C150 8, 160 14, 170 2"/>
+      <path d="M126 2 C134 -22, 152 -22, 162 -30"/>
+    </g>
+    <path d="M28 128 Q80 150 134 128 L140 150 Q80 176 22 150 Z" fill="#C1121F"/>
+    <rect x="24" y="146" width="26" height="46" rx="6" fill="#C1121F"/>
+    <rect x="24" y="156" width="26" height="6" fill="#9E0E18"/>
+    <rect x="24" y="172" width="26" height="6" fill="#9E0E18"/>
+    <ellipse cx="80" cy="110" rx="38" ry="30" fill="#F3DDBE"/>
+    <circle cx="58" cy="86" r="9" fill="#2A1A0F"/>
+    <circle cx="102" cy="86" r="9" fill="#2A1A0F"/>
+    <circle cx="61" cy="82.5" r="3" fill="#fff"/>
+    <circle cx="105" cy="82.5" r="3" fill="#fff"/>
+    <circle cx="46" cy="104" r="8" fill="#F2A6AD" opacity="0.7"/>
+    <circle cx="114" cy="104" r="8" fill="#F2A6AD" opacity="0.7"/>
+    <circle cx="80" cy="112" r="15" fill="#C1121F"/>
+    <circle cx="74" cy="106" r="5" fill="#F2919A"/>
+    <path d="M66 128 Q80 142 94 128" fill="none" stroke="#8A5A2B" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- Snowflakes -->
+  <g fill="#FFFFFF">
+    <circle cx="120" cy="200" r="4" opacity="0.9"/>
+    <circle cx="520" cy="150" r="3" opacity="0.8"/>
+    <circle cx="700" cy="200" r="4" opacity="0.85"/>
+    <circle cx="960" cy="250" r="4" opacity="0.85"/>
+    <circle cx="430" cy="320" r="3" opacity="0.75"/>
+    <circle cx="880" cy="420" r="4" opacity="0.8"/>
+    <circle cx="300" cy="380" r="3" opacity="0.7"/>
+  </g>
+
+  <!-- left dark overlay band -->
+  <rect width="900" height="600" fill="url(#s4overlay)"/>
+</svg>
