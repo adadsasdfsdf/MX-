@@ -14,7 +14,9 @@
 
 ## 3. 列映射(Column mapping)
 
-列映射基本会**自动匹配**(文件使用的是 WooCommerce 标准列名),直接点 **「运行导入器 / Run the importer」** 即可。
+本 CSV 现在使用 **WooCommerce 官方字段名**作为列标题(例如 `description`、`short_description`、`sku`、`regular_price` 等),导入时「列映射」会**自动精准匹配**,无需手动调整。特别是「**描述 description**」和「**简短描述 short_description**」不会再混淆,长文案会正确进入产品的「产品描述」字段。直接点 **「运行导入器 / Run the importer」** 即可。
+
+> ⚠️ **重新导入时**:请在上传页勾选「**将现有产品更新为与导入匹配 / Update existing products**」。这样会**按相同 SKU 覆盖更新**这 53 个商品(**不会产生重复**),导入后产品描述字段就会显示**完整的长文案**。
 
 ## 4. 图片会自动抓取
 
