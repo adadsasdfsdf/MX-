@@ -2,6 +2,8 @@
 
 本文件说明如何使用生成好的 `navidalia-woocommerce-productos.csv` 把全部 53 个商品(连同图片)一次性导入 WooCommerce。
 
+> 📝 **更新说明**:本版本的商品**详细描述(Description)已改写得更长、更丰富**(每个商品一段温馨氛围 + 务实卖点的西班牙语文案),并且**简短描述(Short description)也已填写**作为目录预览。部分商品名称(Name)也做了润色,但 **SKU 保持不变**。价格、图片、分类、库存等均未改动。
+
 ## 1. 进入导入工具
 
 在 WordPress 后台,进入 **「商品 Products → 导入 Import」**(这是 WooCommerce 自带的导入工具)。
