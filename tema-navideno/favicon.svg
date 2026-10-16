@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Navidalia favicon">
+  <defs>
+    <linearGradient id="favBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D21E2B"/>
+      <stop offset="1" stop-color="#780000"/>
+    </linearGradient>
+  </defs>
+  <!-- rounded red tile -->
+  <rect x="0" y="0" width="64" height="64" rx="14" fill="url(#favBg)"/>
+  <!-- gold ring -->
+  <rect x="3" y="3" width="58" height="58" rx="12" fill="none" stroke="#D4AF37" stroke-width="2"/>
+
+  <!-- reindeer head, bold & simple -->
+  <g transform="translate(0,2)">
+    <!-- antlers -->
+    <g fill="none" stroke="#F0D98C" stroke-width="3.5" stroke-linecap="round">
+      <path d="M24 22 C19 13, 13 13, 10 7"/>
+      <path d="M15 13 C10 11, 7 13, 5 10"/>
+      <path d="M40 22 C45 13, 51 13, 54 7"/>
+      <path d="M49 13 C54 11, 57 13, 59 10"/>
+    </g>
+    <!-- head -->
+    <ellipse cx="32" cy="38" rx="18" ry="16" fill="#B9793E"/>
+    <!-- ears -->
+    <ellipse cx="15" cy="34" rx="6.5" ry="4" fill="#9E6531" transform="rotate(-25 15 34)"/>
+    <ellipse cx="49" cy="34" rx="6.5" ry="4" fill="#9E6531" transform="rotate(25 49 34)"/>
+    <!-- muzzle -->
+    <ellipse cx="32" cy="46" rx="11" ry="9" fill="#F3DDBE"/>
+    <!-- eyes -->
+    <circle cx="25" cy="36" r="2.8" fill="#2A1A0F"/>
+    <circle cx="39" cy="36" r="2.8" fill="#2A1A0F"/>
+    <!-- red nose -->
+    <circle cx="32" cy="46" r="4.6" fill="#C1121F"/>
+    <circle cx="30.4" cy="44.4" r="1.5" fill="#F2919A"/>
+  </g>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Arbol de Navidad">
+  <defs>
+    <linearGradient id="treeI" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3C9D45"/>
+      <stop offset="1" stop-color="#226B2A"/>
+    </linearGradient>
+    <linearGradient id="goldI" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F0D98C"/>
+      <stop offset="1" stop-color="#C8992B"/>
+    </linearGradient>
+  </defs>
+  <!-- tree tiers -->
+  <polygon points="50,8 68,34 32,34" fill="url(#treeI)"/>
+  <polygon points="50,24 74,54 26,54" fill="url(#treeI)"/>
+  <polygon points="50,42 82,78 18,78" fill="url(#treeI)"/>
+  <!-- trunk -->
+  <rect x="44" y="78" width="12" height="12" rx="2" fill="#7A4A1E"/>
+  <!-- star -->
+  <polygon points="50,0 54,9 64,9 56,15 59,25 50,19 41,25 44,15 36,9 46,9" fill="url(#goldI)"/>
+  <!-- ornaments -->
+  <circle cx="42" cy="30" r="3" fill="#C1121F"/>
+  <circle cx="58" cy="46" r="3" fill="#D4AF37"/>
+  <circle cx="38" cy="50" r="3" fill="#D4AF37"/>
+  <circle cx="62" cy="68" r="3" fill="#C1121F"/>
+  <circle cx="40" cy="70" r="3" fill="#C1121F"/>
+  <circle cx="50" cy="60" r="3" fill="#D4AF37"/>
+  <!-- garland dots -->
+  <circle cx="50" cy="40" r="1.8" fill="#FDF6EC"/>
+  <circle cx="46" cy="64" r="1.8" fill="#FDF6EC"/>
+  <circle cx="56" cy="56" r="1.8" fill="#FDF6EC"/>
+</svg>

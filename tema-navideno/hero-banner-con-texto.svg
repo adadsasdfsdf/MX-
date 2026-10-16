@@ -1,0 +1,224 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" width="1600" height="600" role="img" aria-label="Escena navidena Navidalia">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7E0A14"/>
+      <stop offset="0.55" stop-color="#C1121F"/>
+      <stop offset="1" stop-color="#9E0E18"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.6">
+      <stop offset="0" stop-color="#F7D9A0" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#F7D9A0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="snow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F2E4D4"/>
+    </linearGradient>
+    <linearGradient id="tree" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3C9D45"/>
+      <stop offset="1" stop-color="#1F5E26"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6E39B"/>
+      <stop offset="1" stop-color="#C8992B"/>
+    </linearGradient>
+    <radialGradient id="starGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF6D6" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#FFF6D6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bulb" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF4CC"/>
+      <stop offset="1" stop-color="#F2B705"/>
+    </radialGradient>
+  </defs>
+
+  <!-- sky -->
+  <rect width="1600" height="600" fill="url(#sky)"/>
+  <rect width="1600" height="600" fill="url(#glow)"/>
+
+  <!-- distant soft moon-glow top-left -->
+  <circle cx="300" cy="120" r="220" fill="url(#starGlow)"/>
+
+  <!-- back snow hills -->
+  <path d="M0 470 C260 410, 520 470, 820 440 C1100 412, 1360 470, 1600 440 L1600 600 L0 600 Z" fill="#E8D7C4" opacity="0.55"/>
+  <!-- front snow ground -->
+  <path d="M0 505 C300 460, 650 520, 1000 500 C1300 484, 1450 520, 1600 500 L1600 600 L0 600 Z" fill="url(#snow)"/>
+
+  <!-- string lights across top -->
+  <g>
+    <path d="M-20 70 Q200 150 420 80 Q640 10 860 90 Q1080 160 1300 85 Q1500 20 1640 95" fill="none" stroke="#5B3A1C" stroke-width="3" opacity="0.7"/>
+    <g>
+      <circle cx="90" cy="118" r="8" fill="url(#bulb)"/>
+      <circle cx="250" cy="128" r="8" fill="#F23B4A"/>
+      <circle cx="420" cy="88" r="8" fill="url(#bulb)"/>
+      <circle cx="590" cy="60" r="8" fill="#58C169"/>
+      <circle cx="760" cy="60" r="8" fill="url(#bulb)"/>
+      <circle cx="930" cy="110" r="8" fill="#F23B4A"/>
+      <circle cx="1100" cy="135" r="8" fill="url(#bulb)"/>
+      <circle cx="1270" cy="92" r="8" fill="#58C169"/>
+      <circle cx="1430" cy="60" r="8" fill="url(#bulb)"/>
+      <circle cx="1560" cy="80" r="8" fill="#F23B4A"/>
+    </g>
+    <!-- soft halos -->
+    <g opacity="0.5">
+      <circle cx="90" cy="118" r="20" fill="url(#starGlow)"/>
+      <circle cx="420" cy="88" r="20" fill="url(#starGlow)"/>
+      <circle cx="760" cy="60" r="20" fill="url(#starGlow)"/>
+      <circle cx="1100" cy="135" r="20" fill="url(#starGlow)"/>
+      <circle cx="1430" cy="60" r="20" fill="url(#starGlow)"/>
+    </g>
+  </g>
+
+  <!-- ===== Christmas tree (right third) ===== -->
+  <g transform="translate(1180,150)">
+    <!-- glow behind star -->
+    <circle cx="80" cy="-6" r="70" fill="url(#starGlow)"/>
+    <!-- tiers -->
+    <polygon points="80,-10 150,120 10,120" fill="url(#tree)"/>
+    <polygon points="80,70 185,240 -25,240" fill="url(#tree)"/>
+    <polygon points="80,170 215,360 -55,360" fill="url(#tree)"/>
+    <!-- snow caps on tiers -->
+    <path d="M18 118 Q80 96 142 118 Q110 128 80 122 Q50 128 18 118 Z" fill="#FFFFFF" opacity="0.85"/>
+    <path d="M-18 238 Q80 212 178 238 Q120 250 80 244 Q40 250 -18 238 Z" fill="#FFFFFF" opacity="0.8"/>
+    <!-- trunk -->
+    <rect x="64" y="360" width="32" height="34" rx="4" fill="#7A4A1E"/>
+    <!-- star -->
+    <polygon points="80,-54 90,-22 124,-22 96,-2 106,32 80,12 54,32 64,-2 36,-22 70,-22" fill="url(#gold)" stroke="#B8891F" stroke-width="1"/>
+    <!-- ornaments -->
+    <circle cx="60" cy="60" r="7" fill="#F23B4A"/>
+    <circle cx="100" cy="100" r="7" fill="#D4AF37"/>
+    <circle cx="40" cy="150" r="7" fill="#D4AF37"/>
+    <circle cx="120" cy="190" r="7" fill="#F23B4A"/>
+    <circle cx="80" cy="150" r="7" fill="#FDF6EC"/>
+    <circle cx="30" cy="300" r="8" fill="#F23B4A"/>
+    <circle cx="130" cy="300" r="8" fill="#D4AF37"/>
+    <circle cx="80" cy="260" r="8" fill="#FDF6EC"/>
+    <circle cx="60" cy="330" r="8" fill="#D4AF37"/>
+    <circle cx="105" cy="340" r="8" fill="#F23B4A"/>
+    <!-- light dots -->
+    <g fill="#FFF4CC">
+      <circle cx="90" cy="40" r="3"/>
+      <circle cx="55" cy="110" r="3"/>
+      <circle cx="110" cy="140" r="3"/>
+      <circle cx="50" cy="240" r="3"/>
+      <circle cx="110" cy="260" r="3"/>
+      <circle cx="95" cy="320" r="3"/>
+    </g>
+  </g>
+
+  <!-- ===== Gift boxes near tree ===== -->
+  <g transform="translate(1120,470)">
+    <rect x="0" y="0" width="80" height="70" rx="5" fill="#2E7D32"/>
+    <rect x="34" y="0" width="12" height="70" fill="#D4AF37"/>
+    <rect x="0" y="26" width="80" height="12" fill="#D4AF37"/>
+    <path d="M40 0 C28 -18, 8 -10, 40 2 C72 -10, 52 -18, 40 0 Z" fill="#D4AF37"/>
+  </g>
+  <g transform="translate(1230,490)">
+    <rect x="0" y="0" width="64" height="56" rx="5" fill="#FDF6EC"/>
+    <rect x="27" y="0" width="10" height="56" fill="#C1121F"/>
+    <rect x="0" y="22" width="64" height="10" fill="#C1121F"/>
+    <path d="M32 0 C22 -14, 6 -8, 32 2 C58 -8, 42 -14, 32 0 Z" fill="#C1121F"/>
+  </g>
+
+  <!-- ===== Cute reindeer (left) ===== -->
+  <g transform="translate(240,250)">
+    <!-- body -->
+    <ellipse cx="110" cy="200" rx="105" ry="78" fill="#B9793E"/>
+    <ellipse cx="110" cy="222" rx="78" ry="48" fill="#C98A4E"/>
+    <!-- legs -->
+    <rect x="48" y="252" width="22" height="56" rx="10" fill="#9E6531"/>
+    <rect x="88" y="262" width="22" height="52" rx="10" fill="#9E6531"/>
+    <rect x="128" y="262" width="22" height="52" rx="10" fill="#8A5A2B"/>
+    <rect x="166" y="252" width="22" height="56" rx="10" fill="#8A5A2B"/>
+    <ellipse cx="59" cy="308" rx="13" ry="6" fill="#5B3A1C"/>
+    <ellipse cx="99" cy="314" rx="13" ry="6" fill="#5B3A1C"/>
+    <ellipse cx="139" cy="314" rx="13" ry="6" fill="#5B3A1C"/>
+    <ellipse cx="177" cy="308" rx="13" ry="6" fill="#5B3A1C"/>
+    <!-- head -->
+    <ellipse cx="80" cy="90" rx="62" ry="56" fill="#B9793E"/>
+    <!-- ears -->
+    <ellipse cx="30" cy="70" rx="20" ry="12" fill="#9E6531" transform="rotate(-28 30 70)"/>
+    <ellipse cx="130" cy="70" rx="20" ry="12" fill="#9E6531" transform="rotate(28 130 70)"/>
+    <!-- antlers -->
+    <g fill="none" stroke="#8A5A2B" stroke-width="9" stroke-linecap="round">
+      <path d="M52 44 C40 10, 18 10, 6 -16"/>
+      <path d="M28 16 C10 8, 0 14, -10 2"/>
+      <path d="M34 2 C26 -22, 8 -22, -2 -30"/>
+      <path d="M108 44 C120 10, 142 10, 154 -16"/>
+      <path d="M132 16 C150 8, 160 14, 170 2"/>
+      <path d="M126 2 C134 -22, 152 -22, 162 -30"/>
+    </g>
+    <!-- scarf -->
+    <path d="M28 128 Q80 150 134 128 L140 150 Q80 176 22 150 Z" fill="#C1121F"/>
+    <rect x="24" y="146" width="26" height="46" rx="6" fill="#C1121F"/>
+    <rect x="24" y="156" width="26" height="6" fill="#9E0E18"/>
+    <rect x="24" y="172" width="26" height="6" fill="#9E0E18"/>
+    <!-- muzzle -->
+    <ellipse cx="80" cy="110" rx="38" ry="30" fill="#F3DDBE"/>
+    <!-- eyes -->
+    <circle cx="58" cy="86" r="9" fill="#2A1A0F"/>
+    <circle cx="102" cy="86" r="9" fill="#2A1A0F"/>
+    <circle cx="61" cy="82.5" r="3" fill="#fff"/>
+    <circle cx="105" cy="82.5" r="3" fill="#fff"/>
+    <!-- cheeks -->
+    <circle cx="46" cy="104" r="8" fill="#F2A6AD" opacity="0.7"/>
+    <circle cx="114" cy="104" r="8" fill="#F2A6AD" opacity="0.7"/>
+    <!-- red nose -->
+    <circle cx="80" cy="112" r="15" fill="#C1121F"/>
+    <circle cx="74" cy="106" r="5" fill="#F2919A"/>
+    <!-- smile -->
+    <path d="M66 128 Q80 142 94 128" fill="none" stroke="#8A5A2B" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- ===== Snowflakes / dots scattered ===== -->
+  <g fill="#FFFFFF">
+    <circle cx="120" cy="200" r="4" opacity="0.9"/>
+    <circle cx="520" cy="150" r="3" opacity="0.8"/>
+    <circle cx="700" cy="260" r="5" opacity="0.9"/>
+    <circle cx="820" cy="140" r="3" opacity="0.7"/>
+    <circle cx="960" cy="300" r="4" opacity="0.85"/>
+    <circle cx="1050" cy="180" r="3" opacity="0.7"/>
+    <circle cx="640" cy="340" r="4" opacity="0.8"/>
+    <circle cx="430" cy="320" r="3" opacity="0.75"/>
+    <circle cx="880" cy="420" r="4" opacity="0.8"/>
+    <circle cx="300" cy="380" r="3" opacity="0.7"/>
+    <circle cx="1500" cy="300" r="4" opacity="0.8"/>
+    <circle cx="1360" cy="200" r="3" opacity="0.7"/>
+  </g>
+  <!-- bigger star-snowflakes -->
+  <g stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" opacity="0.9">
+    <g transform="translate(560,230)">
+      <line x1="-10" y1="0" x2="10" y2="0"/><line x1="0" y1="-10" x2="0" y2="10"/>
+      <line x1="-7" y1="-7" x2="7" y2="7"/><line x1="-7" y1="7" x2="7" y2="-7"/>
+    </g>
+    <g transform="translate(900,210)">
+      <line x1="-8" y1="0" x2="8" y2="0"/><line x1="0" y1="-8" x2="0" y2="8"/>
+      <line x1="-6" y1="-6" x2="6" y2="6"/><line x1="-6" y1="6" x2="6" y2="-6"/>
+    </g>
+    <g transform="translate(1040,380)">
+      <line x1="-9" y1="0" x2="9" y2="0"/><line x1="0" y1="-9" x2="0" y2="9"/>
+      <line x1="-6" y1="-6" x2="6" y2="6"/><line x1="-6" y1="6" x2="6" y2="-6"/>
+    </g>
+  </g>
+
+  <!-- ===== Baked-in Spanish headline ===== -->
+  <g font-family="'Trebuchet MS','Segoe UI',Verdana,sans-serif" text-anchor="start">
+    <!-- soft dark panel for contrast behind text -->
+    <rect x="70" y="120" width="760" height="300" rx="24" fill="#5E0810" opacity="0.42"/>
+
+    <!-- small kicker -->
+    <text x="104" y="178" font-size="26" font-weight="700" letter-spacing="4" fill="#F6E39B">NAVIDALIA 🦌🎄</text>
+
+    <!-- main headline (two lines) -->
+    <text x="100" y="246" font-size="62" font-weight="800" fill="#FDF6EC">La magia de la Navidad,</text>
+    <text x="100" y="314" font-size="62" font-weight="800" fill="#FDF6EC">a tu puerta</text>
+
+    <!-- tagline -->
+    <text x="104" y="360" font-size="26" font-weight="600" fill="#FBE9D2">Árboles, esferas, luces y regalos · Envíos a todo México 🎄</text>
+
+    <!-- faux button -->
+    <g>
+      <rect x="104" y="384" width="236" height="60" rx="30" fill="url(#gold)"/>
+      <text x="222" y="423" font-size="26" font-weight="800" fill="#7E0A14" text-anchor="middle">Ver tienda</text>
+    </g>
+  </g>
+</svg>
