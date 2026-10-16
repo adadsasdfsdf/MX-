@@ -1,0 +1,84 @@
+<!--
+  Navidalia · Barra de promociones superior (verde, scroll infinito)
+  Pega TODO este bloque en un bloque de WordPress tipo "HTML personalizado"
+  (自定义 HTML / Custom HTML), ARRIBA del slider en la pagina de Inicio.
+  100% CSS puro (sin JavaScript) para que sobreviva al editor de WordPress.
+  Todas las clases llevan el prefijo .nv-promo- para no chocar con el tema.
+-->
+<div class="nv-promo-bar" role="marquee" aria-label="Promociones Navidalia">
+  <div class="nv-promo-track">
+    <!-- Pista 1 -->
+    <span class="nv-promo-item">🚚 Envíos a toda la República desde $799 MXN</span>
+    <span class="nv-promo-sep">•</span>
+    <span class="nv-promo-item">🎁 Todo el catálogo con 20% de descuento</span>
+    <span class="nv-promo-sep">•</span>
+    <span class="nv-promo-item">🎄 La magia de la Navidad, directo a tu puerta</span>
+    <span class="nv-promo-sep">•</span>
+    <span class="nv-promo-item">💳 Paga con tarjeta a meses sin intereses</span>
+    <span class="nv-promo-sep">•</span>
+    <span class="nv-promo-item">⭐ Miles de familias felices</span>
+    <span class="nv-promo-sep">•</span>
+    <!-- Pista 2 (duplicado para que el bucle sea continuo / sin salto) -->
+    <span class="nv-promo-item" aria-hidden="true">🚚 Envíos a toda la República desde $799 MXN</span>
+    <span class="nv-promo-sep" aria-hidden="true">•</span>
+    <span class="nv-promo-item" aria-hidden="true">🎁 Todo el catálogo con 20% de descuento</span>
+    <span class="nv-promo-sep" aria-hidden="true">•</span>
+    <span class="nv-promo-item" aria-hidden="true">🎄 La magia de la Navidad, directo a tu puerta</span>
+    <span class="nv-promo-sep" aria-hidden="true">•</span>
+    <span class="nv-promo-item" aria-hidden="true">💳 Paga con tarjeta a meses sin intereses</span>
+    <span class="nv-promo-sep" aria-hidden="true">•</span>
+    <span class="nv-promo-item" aria-hidden="true">⭐ Miles de familias felices</span>
+    <span class="nv-promo-sep" aria-hidden="true">•</span>
+  </div>
+</div>
+
+<style>
+  .nv-promo-bar {
+    width: 100%;
+    overflow: hidden;            /* wrapper que oculta el desbordamiento */
+    background: #2E7D32;         /* verde Navidad */
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    box-sizing: border-box;
+    border-bottom: 2px solid #1F5E26;
+  }
+  .nv-promo-track {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    padding: 10px 0;
+    /* 2x porque la pista esta duplicada: 200% permite loop perfecto */
+    width: max-content;
+    will-change: transform;
+    animation: nv-promo-scroll 32s linear infinite;
+  }
+  .nv-promo-item {
+    padding: 0 18px;
+    letter-spacing: 0.2px;
+  }
+  .nv-promo-sep {
+    color: #D4AF37;              /* dorado como separador */
+    font-weight: 700;
+    opacity: 0.9;
+  }
+  /* Pausa al pasar el mouse (opcional) */
+  .nv-promo-bar:hover .nv-promo-track {
+    animation-play-state: paused;
+  }
+  @keyframes nv-promo-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }  /* avanza la mitad = 1 copia completa */
+  }
+  /* Respeta "reducir movimiento" del sistema */
+  @media (prefers-reduced-motion: reduce) {
+    .nv-promo-track { animation: none; }
+  }
+  /* Un poco mas rapido / fuente menor en movil */
+  @media (max-width: 600px) {
+    .nv-promo-bar { font-size: 13px; }
+    .nv-promo-track { animation-duration: 22s; }
+  }
+</style>
