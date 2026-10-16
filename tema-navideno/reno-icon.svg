@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Reno">
+  <!-- antlers -->
+  <g fill="none" stroke="#8A5A2B" stroke-width="5" stroke-linecap="round">
+    <path d="M38 34 C30 20, 20 20, 14 10"/>
+    <path d="M24 20 C16 17, 11 20, 7 15"/>
+    <path d="M28 13 C24 5, 17 5, 13 2"/>
+    <path d="M62 34 C70 20, 80 20, 86 10"/>
+    <path d="M76 20 C84 17, 89 20, 93 15"/>
+    <path d="M72 13 C76 5, 83 5, 87 2"/>
+  </g>
+  <!-- head -->
+  <ellipse cx="50" cy="56" rx="28" ry="25" fill="#B9793E"/>
+  <!-- ears -->
+  <ellipse cx="22" cy="50" rx="10" ry="6" fill="#9E6531" transform="rotate(-25 22 50)"/>
+  <ellipse cx="78" cy="50" rx="10" ry="6" fill="#9E6531" transform="rotate(25 78 50)"/>
+  <!-- muzzle -->
+  <ellipse cx="50" cy="68" rx="18" ry="14" fill="#F3DDBE"/>
+  <!-- eyes -->
+  <circle cx="39" cy="53" r="4.2" fill="#2A1A0F"/>
+  <circle cx="61" cy="53" r="4.2" fill="#2A1A0F"/>
+  <circle cx="40.5" cy="51.5" r="1.3" fill="#fff"/>
+  <circle cx="62.5" cy="51.5" r="1.3" fill="#fff"/>
+  <!-- red nose -->
+  <circle cx="50" cy="68" r="7" fill="#C1121F"/>
+  <circle cx="47.5" cy="65.5" r="2.2" fill="#F2919A"/>
+  <!-- smile -->
+  <path d="M43 76 Q50 82 57 76" fill="none" stroke="#8A5A2B" stroke-width="2.4" stroke-linecap="round"/>
+</svg>
